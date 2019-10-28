@@ -1,2 +1,2 @@
 # PathOfTheDragon
-S-STEM project 2019
+S-STEM project Fall 2019
