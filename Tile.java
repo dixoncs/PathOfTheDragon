@@ -3,18 +3,6 @@ import java.util.Stack;
 
 public class Tile {
 
-    // I know I don't need this for the class. It's just to help me test.
-    public static void main(String[] args) throws Exception {
-        Tile test = new Tile();
-        test.printTile();
-        test.rotateTile(-3).printTile();
-        test.rotateTile(-2).printTile();
-        test.rotateTile(-1).printTile();
-        test.rotateTile(1).printTile();
-        test.rotateTile(2).printTile();
-        test.rotateTile(3).printTile();
-    }
-
     // Fields
     private int[] points;
 
