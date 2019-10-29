@@ -3,6 +3,10 @@ import java.util.Stack;
 
 public class Tile {
 
+    public static void main(String[] args) {
+
+    }
+
     // Fields
     private int[] points;
 
@@ -41,6 +45,11 @@ public class Tile {
             output.append(" ").append(location).append("  ");
         }
         System.out.println(output + "\n");
+    }
+
+    public Tile rotateTile() {
+
+        return new Tile();
     }
 
     public int[] getPoints() {
