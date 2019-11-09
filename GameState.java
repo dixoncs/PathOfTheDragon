@@ -1,13 +1,12 @@
-import java.util.Stack;
+//import java.util.Stack;
+import java.util.Vector;
 
 /**
- * GameState class
+ * GameState class.
  *
  * @author Mikayla Sage
  * @version 10.30.19
  */
-import java.util.Vector;
-
 public class GameState extends AbstractGame {
     public static final int BOARD_DIMENSION = 6;
     public static final int DISPLAY_DIMENSION = 48;
@@ -18,11 +17,18 @@ public class GameState extends AbstractGame {
     public static GameBoard gameBoard;
     public Player[] players;
 
+    /**
+     * Constructor.
+     */
     public GameState() {
         players = new Player[2];
         gameBoard = new GameBoard();
     }
 
+    /**
+     * Main method.
+     * @param args command-line arguments (not used)
+     */
     public static void main(String[] args) {
         GameState game = new GameState();
         game.initBoard();
@@ -30,7 +36,8 @@ public class GameState extends AbstractGame {
     }
 
     /**
-     * Helper method for print testing method to initialize GameBoard with random tiles
+     * Helper method for print testing method to initialize GameBoard 
+     * with random tiles.
      */
     public void initBoard() {
         for (int i = 0; i < BOARD_DIMENSION; i++) {
@@ -50,19 +57,19 @@ public class GameState extends AbstractGame {
      *  @return Vector that contains all the legal moves that can currently be
      *      made in the game
      */
-    public Vector<String> computeMoves(){
+    public Vector<String> computeMoves() {
         return null;
     }
 
 
     /**
      * shows the current status of the game to the user (perhaps by printing to
-     * the screen)
+     * the screen).
      *
      * @author Mikayla Sage
      * @version 10.30.19
      */
-    public void displayStatus(){
+    public void displayStatus() {
         for (int i = 0; i < BOARD_DIMENSION; i++) {
             for (int j = 0; j < BOARD_DIMENSION; j++) {
                 System.out.println("[" + i + "," + j + "]");
@@ -83,7 +90,7 @@ public class GameState extends AbstractGame {
      *      the human; negative numbers favor the computer; magnitude
      *      matters.
      */
-    public double evaluate(){
+    public double evaluate() {
         return 0;
     }
 
@@ -92,7 +99,7 @@ public class GameState extends AbstractGame {
      *
      * @return True, if the game is over.
      */
-    public boolean isGameOver(){
+    public boolean isGameOver() {
         return true;
     }
 
