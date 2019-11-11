@@ -1,19 +1,45 @@
 import java.util.Random;
 import java.util.Stack;
 
+
+/**
+ *
+ * @author Cameron Small
+ *
+ */
 public class Tile {
 
     // Fields
+    /**
+    * Array of integers that express the points/paths for each tile.
+    */
     private int[] points;
 
+
+    /**
+     * Default constructor.
+     *
+     * Calls the shuffleValues() method and returns a list of points/paths.
+     */
     public Tile() {
         points = shuffleValues();
     }
 
+    /**
+     * Paramterized constructor.
+     *
+     * @param values
+     *          An array of integers that indicate chosen points/paths.
+     */
     public Tile(int[] values) {
         points = values;
     }
 
+    /**
+     * The shuffleValues() method creates a random, valid collection of points to instantiate tiles with.
+     *
+     * @return a random array of ints that represent points/paths for a tile.
+     */
     private static int[] shuffleValues() {
         Stack<Integer> possibleValues = new Stack<>();          // create a stack to store possible values in
         for (int i = 0; i < 8; i++) {                           // populate the stack with values 0 - 7
@@ -35,6 +61,9 @@ public class Tile {
         return output;
     }
 
+    /**
+     * The printTile() method is a basic way to print out a tile in terms of points.
+     */
     public void printTile() {
         StringBuilder output = new StringBuilder("[0] [1] [2] [3] [4] [5] [6] [7]\n");
         for (int location : points) {
@@ -43,6 +72,16 @@ public class Tile {
         System.out.println(output + "\n");
     }
 
+    /**
+     * The rotateTile method allows for a tile to be rotated a number of rotations and a new Tile object to be returned.
+     * It will be rotated between 0 and 3 times clockwise.
+     *
+     * @param cwRotations
+     *              Specifies how many times to rotate the tile (0 to 3 times clockwise)
+     * @return A new Tile object with the updated orientation.
+     * @throws Exception
+     *              Thrown if the input (number of rotations) is invalid (below 0 or above 3).
+     */
     public Tile rotateTile(int cwRotations) throws Exception {
 
         if (cwRotations < 0 || cwRotations > 3) {
