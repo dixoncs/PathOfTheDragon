@@ -14,10 +14,14 @@ public class GameState extends AbstractGame {
     public static final int CONVERSION_COLS = 8;
     public static final int NUM_PLAYERS = 2;
     public static final int NUM_HAND_TILES = 3;
+    public static final int HUMAN_INDEX = 0;
+    public static final int COMPUTER_INDEX = 1;
 
     public static GameBoard gameBoard;
     public int[][] playerPositions;
     public Tile[][] playerHands;
+
+    //HUMAN ALWAYS GOES FIRST
 
     /**
      * Initilializes playerPositions, values are all equal to 8 to
@@ -42,6 +46,22 @@ public class GameState extends AbstractGame {
         GameState game = new GameState();
         game.initBoard();
         game.displayStatus();
+    }
+
+    /**
+     * Print all tiles for a player's hand
+     */
+    public void printAllTiles() {
+        if (nextMover() == Player.human) {
+            for (int i = 0; i < NUM_HAND_TILES; i++) {
+                playerHands[HUMAN_INDEX][i].printTile();
+            }
+        }
+        else {
+            for (int i = 0; i < NUM_HAND_TILES; i++) {
+                playerHands[COMPUTER_INDEX][i].printTile();
+            }
+        }
     }
 
     /**
