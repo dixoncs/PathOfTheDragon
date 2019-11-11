@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC "-//Puppy Crawl//DTD Check Configuration 1.3//EN" "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
+<!--
+Checkstyle configuration for CS department at Appalachian State University
+-->
+<module name="Checker">
+
+    <module name="NewlineAtEndOfFile">
+        <property name="severity" value="warning"/>
+        <property name="lineSeparator" value="lf"/>
+    </module>
+        <!-- Section 3.1 -->
+<!--rmp    <module name="FileLength">
+        <property name="max" value="1000"/>
+    </module> 
+-->
+        <!--  Section 5.1. -->
+<!--rmp	<module name="RegexpHeader">
+            <property name="header" value="^/\*\*$\n^ \* \w*\.java$\n^ \*\s*$\n^ \*\s*[^@]*$\n^ \* @author .*$\n^ \* @version .*$\n^ \*/$"/>
+            <property name="multiLines" value="4"/>
+        </module>
+-->
+    <module name="TreeWalker">
+
+        <!-- Section 3.1 -->
+        <module name="DeclarationOrder"/>
+        <module name="AvoidStarImport"/>
+        <module name="RedundantImport"/>
+        <module name="UnusedImports"/>
+
+        <!-- Section 4.1 -->
+        <module name="Indentation">
+            <property name="caseIndent" value="4"/>
+        </module>
+        <module name="LineLength">
+            <property name="severity" value="warning"/>
+            <property name="tabWidth" value="4"/>
+            <property name="ignorePattern" value="^$"/>
+            <property name="max" value="80"/>            
+        </module>
+
+        <!-- Section 5.1 -->
+        <module name="JavadocStyle"/>
+        <!-- Section 5.1.2 -->
+        <module name="JavadocType">
+            <property name="authorFormat" value="\S"/>
+            <property name="versionFormat" value="\S"/>
+        </module>        <!-- Section 5.1.3 -->
+        <module name="JavadocMethod"/>
+        <!-- Section 5.2.3 -->
+        <module name="TrailingComment"/>
+
+        <!-- Section 6.1 -->
+	<module name="MultipleVariableDeclarations"/>
+
+        <!-- Section 6.4 -->
+        <module name="MethodLength">
+            <property name="severity" value="warning"/>
+            <property name="countEmpty" value="false"/>
+            <property name="max" value="80"/>            
+        </module>
+
+
+        <!-- Section 7.[4-9] -->
+        <module name="LeftCurly">
+            <property name="option" value="eol"/>
+            <!--<property name="option" value="nl"/> -->
+            <!--<property name="maxLineLength" value="80"/> -->
+        </module>
+        <module name="RightCurly">
+            <property name="option" value="alone"/>            
+        </module>
+	<module name="NeedBraces"/>
+
+        <!-- Section 7.1 -->
+<!--rmp	<module name="OneStatementPerLine"/>  -->
+
+        <!-- Section 7.2 -->
+        <module name="EmptyBlock"/>
+
+        <!-- Section 7.8 -->
+        <module name="MissingSwitchDefault"/>
+        <module name="DefaultComesLast"/>
+	<module name="FallThrough"/>
+
+        <!-- Section 8.2 -->
+<!--rmp        <module name="GenericWhitespace"/>
+-->
+        <module name="MethodParamPad"/>
+        <module name="NoWhitespaceAfter"/>
+        <module name="NoWhitespaceBefore"/>
+        <module name="OperatorWrap"/>
+        <module name="ParenPad"/>
+        <module name="TypecastParenPad"/>
+        <module name="WhitespaceAfter"/>
+		
+		<!--rmp changed this to avoid errors between Web-CAT And Eclipse -->
+        <!--rmp module name="WhitespaceAround"/-->
+		<module name="WhitespaceAround">
+            <property name="tokens" value="ASSIGN, BAND, BAND_ASSIGN, BOR, BOR_ASSIGN, BSR, BSR_ASSIGN, BXOR, BXOR_ASSIGN, COLON, DIV, DIV_ASSIGN, EQUAL, GE, GT, LAND, LCURLY, LE, LITERAL_ASSERT, LITERAL_CATCH, LITERAL_DO, LITERAL_ELSE, LITERAL_FINALLY, LITERAL_FOR, LITERAL_IF, LITERAL_RETURN, LITERAL_SYNCHRONIZED, LITERAL_TRY, LITERAL_WHILE, LOR, LT, MINUS, MINUS_ASSIGN, MOD, MOD_ASSIGN, NOT_EQUAL, PLUS, PLUS_ASSIGN, RCURLY, SL, SLIST, SL_ASSIGN, SR, SR_ASSIGN, STAR, STAR_ASSIGN, TYPE_EXTENSION_AND, QUESTION"/>
+        </module>
+
+        <!-- Section 9 -->
+        <module name="PackageName"/>
+        <module name="TypeName"/>
+        <module name="ConstantName">
+            <property name="format" value="^^[A-Z][A-Z0-9_]*$"/>
+        </module>
+        <module name="LocalFinalVariableName">
+            <property name="format" value="^[A-Z][A-Z0-9_]*$"/>
+        </module>
+        <module name="LocalVariableName"/>
+        <module name="MemberName"/>
+        <module name="MethodName"/>
+        <module name="ParameterName"/>
+        <module name="StaticVariableName"/>
+
+	<!-- Section 10.2 -->
+	<!--jbf major issues in 1440!
+        <module name="MagicNumber">
+            <property name="ignoreNumbers" value="-1,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,20,32,50,100,212"/>
+        </module>
+	-->
+
+	<!-- Section 10.4 -->
+        <module name="SimplifyBooleanReturn"/>
+
+    </module>
+
+</module>
