@@ -109,7 +109,14 @@ public class GameState extends AbstractGame {
      * @return True, if the game is over.
      */
     public boolean isGameOver() {
-        return true;
+       // return true;
+       if(playerPositions[0][0] == -1 || playerPositions[1][0] == -1)
+       {
+           return true;
+       }
+       else {
+           return false;
+       }
     }
 
     /**
