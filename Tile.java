@@ -3,10 +3,6 @@ import java.util.Stack;
 
 public class Tile {
 
-    public static void main(String[] args) {
-
-    }
-
     // Fields
     private int[] points;
 
@@ -47,9 +43,34 @@ public class Tile {
         System.out.println(output + "\n");
     }
 
-    public Tile rotateTile() {
+    public Tile rotateTile(int cwRotations) throws Exception {
 
-        return new Tile();
+        if (cwRotations < 0 || cwRotations > 3) {
+            throw new Exception("The cwRotation must be an integer between 0 and 3.");
+        }
+
+        int[] legend = new int[8];
+        int[] newTile = new int[8];
+
+        switch(cwRotations) {
+            case 1: legend = new int[] {2, 3, 4, 5, 6, 7, 0, 1};
+                break;
+            case 2: legend = new int[] {4, 5, 6, 7, 0, 1, 2, 3};
+                break;
+            case 3: legend = new int[] {6, 7, 0, 1, 2, 3, 4, 5};
+                break;
+            default:
+                return this;
+        }
+
+        for (int i = 0; i < 8; i++) {
+            int ogValue = this.getPoints()[i];                  // OG mapping
+            int newI = legend[i];                               // new i for rotation
+            int newVal = legend[ogValue];
+            newTile[newI] = newVal;
+        }
+
+        return new Tile(newTile);
     }
 
     public int[] getPoints() {
