@@ -26,7 +26,7 @@ public class Tile {
     }
 
     /**
-     * Paramterized constructor.
+     * Parameterized constructor.
      *
      * @param values
      *          An array of integers that indicate chosen points/paths.
