@@ -19,7 +19,6 @@ default:
 compile: GameState.java GameStateTest.java $(JUNIT5_JAR)
 	javac AbstractGame.java
 	javac GameBoard.java
-	javac Player.java
 	javac Tile.java
 	javac GameState.java
 	javac -cp .:$(JUNIT5_JAR) GameStateTest.java
