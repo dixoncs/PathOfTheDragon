@@ -13,15 +13,24 @@ public class GameState extends AbstractGame {
     public static final int CONVERSION_ROWS = 36;
     public static final int CONVERSION_COLS = 8;
     public static final int NUM_PLAYERS = 2;
+    public static final int NUM_HAND_TILES = 3;
 
     public static GameBoard gameBoard;
-    public Player[] players;
+    public int[][] playerPositions;
+    public Tile[][] playerHands;
 
     /**
-     * Constructor.
+     * Initilializes playerPositions, values are all equal to 8 to
+     * symbolize no current placement.
      */
     public GameState() {
-        players = new Player[2];
+        playerPositions = new int[NUM_PLAYERS][NUM_HAND_TILES];
+        for (int i = 0; i < NUM_PLAYERS; i++) {
+            for (int j = 0; j < NUM_HAND_TILES; j++) {
+                playerPositions[i][j] = 8;
+            }
+        }
+        playerHands = new Tile[NUM_PLAYERS][NUM_HAND_TILES];
         gameBoard = new GameBoard();
     }
 
@@ -102,7 +111,13 @@ public class GameState extends AbstractGame {
      * @return True, if the game is over.
      */
     public boolean isGameOver() {
-        return true;
+       if(playerPositions[0][0] == -1 || playerPositions[1][0] == -1)
+       {
+           return true;
+       }
+       else {
+           return false;
+       }
     }
 
     /**
@@ -126,4 +141,7 @@ public class GameState extends AbstractGame {
     public void makeMove(String move) {
         
     }
+
 }
+
+
