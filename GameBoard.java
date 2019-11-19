@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 /**
  * @author Courtney Dixon
  * @author Cameron Small
@@ -8,9 +10,11 @@ public class GameBoard {
     public Tile[][] board;
     public Player playerOne;
     public Player playerTwo;
+    public HashMap<String, String> tilePaths;
 
     public GameBoard() {
         board = new Tile[6][6];
+        tilePaths = new HashMap<String, String>();
     }
 
     /**
