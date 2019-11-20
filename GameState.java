@@ -120,6 +120,8 @@ public class GameState extends AbstractGame {
      *      matters.
      */
     public double evaluate() {
+
+
         return 0;
     }
 
@@ -145,8 +147,19 @@ public class GameState extends AbstractGame {
      *      The string representation of the move.
      * @return True, if the move is legal.
      */
-    public boolean isLegal(String move) {
-        return true;
+    public boolean isLegal(String move)
+    {
+        if(move.length() < 2) 
+        {
+            if((move.charAt(0) == '0' || move.charAt(0) == '1' || move.charAt(0) == '2') 
+                && (move.charAt(1) == '0' || move.charAt(1) == '1' || move.charAt(1) == '2'
+                || move.charAt(1) == '3'))
+            {
+                return true;
+            }
+            return false;
+        }
+        return false;
     }
 
     /**
@@ -160,27 +173,6 @@ public class GameState extends AbstractGame {
         
     }
 
-    /**
-     * Helper method to tell if a location is off the board.
-     *
-     * @param loc the row, column, and point of the location in question
-     */
-    public boolean perimeter(String loc)
-    {
-        String[] perim = {"000","001","010","011","020","021","030","031","040","041","050","051",
-                          "007","006","107","106","207","206","307","306","407","406","507","506",        
-                          "052","053","152","153","252","253","352","353","452","453","552","553",
-                          "505","504","515","514","525","524","535","534","545","544","555","554"};
-                    
-        for(int i = 0; i < perim.length; i++)
-        {
-            if(perim[i].equals(loc))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
 }
 
 

@@ -43,7 +43,7 @@ public class GameStateTest
     @Test
     public void testPerimeter()
     {
-        GameState gs = new GameState();
+        GameBoard gb = new GameBoard();
         String[] testPerim = {"000","001","010","011","020","021","030","031","040","041","050","051",
                               "007","006","107","106","207","206","307","306","407","406","507","506",       
                               "052","053","152","153","252","253","352","353","452","453","552","553",
@@ -51,7 +51,7 @@ public class GameStateTest
 
         for(int i = 0; i < testPerim.length; i++)
         {
-            if(!gs.perimeter(testPerim[i]))
+            if(!gb.perimeter(testPerim[i]))
             {
                 fail("Perimeter list fails at " + testPerim[i]);
             }

@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 /**
  * @author Courtney Dixon
  * @author Cameron Small
@@ -6,9 +8,11 @@
 public class GameBoard {
 
     public Tile[][] board;
+    public HashMap<String, String> tilePaths;
 
     public GameBoard() {
         board = new Tile[6][6];
+        tilePaths = new HashMap<String, String>();
     }
 
     /**
@@ -77,6 +81,28 @@ public class GameBoard {
         String neighborIJK = Integer.toString(neighborI) + Integer.toString(neighborJ) + Integer.toString(neighborK);
 
         return neighborIJK;
+    }    
+    
+    /**
+     * Helper method to tell if a location is off the board.
+     *
+     * @param loc the row, column, and point of the location in question
+     */
+    public boolean perimeter(String loc)
+    {
+        String[] perim = {"000","001","010","011","020","021","030","031","040","041","050","051",
+                          "007","006","107","106","207","206","307","306","407","406","507","506",        
+                          "052","053","152","153","252","253","352","353","452","453","552","553",
+                          "505","504","515","514","525","524","535","534","545","544","555","554"};
+                    
+        for(int i = 0; i < perim.length; i++)
+        {
+            if(perim[i].equals(loc))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
 
