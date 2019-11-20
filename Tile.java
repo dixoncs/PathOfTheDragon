@@ -82,10 +82,10 @@ public class Tile {
      * @throws Exception
      *              Thrown if the input (number of rotations) is invalid (below 0 or above 3).
      */
-    public Tile rotateTile(int cwRotations) throws Exception {
+    public Tile rotateTile(int cwRotations) {
 
         if (cwRotations < 0 || cwRotations > 3) {
-            throw new Exception("The cwRotation must be an integer between 0 and 3.");
+            return null;
         }
 
         int[] legend = new int[8];

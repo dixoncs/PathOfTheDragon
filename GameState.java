@@ -9,9 +9,6 @@ import java.util.Vector;
  */
 public class GameState extends AbstractGame {
     public static final int BOARD_DIMENSION = 6;
-    public static final int DISPLAY_DIMENSION = 48;
-    public static final int CONVERSION_ROWS = 36;
-    public static final int CONVERSION_COLS = 8;
     public static final int NUM_PLAYERS = 2;
     public static final int NUM_HAND_TILES = 3;
     public static final int HUMAN_INDEX = 0;
@@ -46,20 +43,18 @@ public class GameState extends AbstractGame {
         GameState game = new GameState();
         game.initBoard();
         game.displayStatus();
+        System.out.println(game.nextMover().ordinal());
     }
 
     /**
      * Print all tiles for a player's hand
      */
-    public void printAllTiles() {
-        if (nextMover() == Player.human) {
-            for (int i = 0; i < NUM_HAND_TILES; i++) {
-                playerHands[HUMAN_INDEX][i].printTile();
-            }
-        }
-        else {
-            for (int i = 0; i < NUM_HAND_TILES; i++) {
-                playerHands[COMPUTER_INDEX][i].printTile();
+    public void printPlayerHand() {
+        for (int i = 0; i < NUM_HAND_TILES; i++) {
+            for (int j = 0; j <= 3; j++) {
+                System.out.print("[" + i);
+                System.out.println(j + "]");
+                playerHands[nextMover().ordinal()][i].rotateTile(j).printTile();
             }
         }
     }
