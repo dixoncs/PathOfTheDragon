@@ -170,6 +170,68 @@ public class GameState extends AbstractGame {
      *      The string representation of the move.
      */
     public void makeMove(String move) {
+        if (isLegal(move)) {
+            int k = Integer.parseInt(String.valueOf(move.charAt(0)));
+            int r = Integer.parseInt(String.valueOf(move.charAt(1)));
+            Tile t;
+            
+            if (nextMover() == Player.human) {
+                t = playerHands[HUMAN_INDEX][k];
+            }
+            else {
+                t = playerHands[COMPUTER_INDEX][k];
+            }
+            
+            try {
+                t.rotateTile(r);
+            }
+            catch (Exception e) {
+                System.out.println(e);
+            }
+            
+            updatePlayerHand(k);
+
+            //getNewTileLoc()
+
+            //updateGameBoard(t)
+            
+            //updatePaths()
+        }
+    }
+
+    /**
+     * Helper method to update the player hand. Used by makeMove.
+     *
+     * @param index
+     *      The index of the player's hand to be replaced.
+     */
+    public void updatePlayerHand(int index) {
+        if (nextMover() == Player.human) {
+            playerHands[HUMAN_INDEX][index] = new Tile();
+        }
+        else {
+            playerHands[COMPUTER_INDEX][index] = new Tile();
+        }
+    }
+
+    /**
+     * Helper method to update the game board after Tile is played.
+     *
+     * @param i
+     *      i position on the gameboard
+     * @param j
+     *      j position on the gameboard
+     * @param tile
+     *      tiles to be added to the board from player's hand
+     */
+    public void updateGameBoard(int i, int j, Tile tile) {
+        gameBoard.board[i][j] = tile;
+    }
+
+    /**
+     * Helper method to update player positions.
+     */
+    public void updatePlayerPositions() {
         
     }
 
