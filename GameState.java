@@ -191,11 +191,12 @@ public class GameState extends AbstractGame {
             
             updatePlayerHand(k);
 
-            //getNewTileLoc()
+            int[] loc = getNewTileLoc();
 
-            //updateGameBoard(t)
+            updateGameBoard(loc[0], loc[1], t);
             
-            //updatePaths()
+            //updatePaths();
+            //updatePlayerPositions();
         }
     }
 
@@ -212,6 +213,37 @@ public class GameState extends AbstractGame {
         else {
             playerHands[COMPUTER_INDEX][index] = new Tile();
         }
+    }
+
+    public int[] getNewTileLoc() {
+        int p;
+        if (nextMover() == Player.human) {
+            p = HUMAN_INDEX;
+        }
+        else {
+            p = COMPUTER_INDEX;
+        }
+
+        int[] loc = new int[2];
+
+        if (playerPositions[p][2] == 0 || playerPositions[p][2] == 1) {
+            loc[0] = playerPositions[p][0] - 1;
+            loc[1] = playerPositions[p][1];
+        }
+        else if (playerPositions[p][2] == 2 || playerPositions[p][2] == 3) {
+            loc[0] = playerPositions[p][0];
+            loc[1] = playerPositions[p][1] + 1;
+        }
+        else if (playerPositions[p][2] == 4 || playerPositions[p][2] == 5) {
+            loc[0] = playerPositions[p][0] + 1;
+            loc[1] = playerPositions[p][1];
+        }
+        else {
+            loc[0] = playerPositions[p][0];
+            loc[1] = playerPositions[p][1] - 1;
+        }
+
+        return loc;
     }
 
     /**
