@@ -2,12 +2,12 @@
 import java.util.Vector;
 
 /**
- * GameState class.
+ * Tsuro class.
  *
  * @author Mikayla Sage
  * @version 10.30.19
  */
-public class GameState extends AbstractGame {
+public class Tsuro extends AbstractGame {
     public static final int BOARD_DIMENSION = 6;
     public static final int DISPLAY_DIMENSION = 48;
     public static final int CONVERSION_ROWS = 36;
@@ -27,7 +27,7 @@ public class GameState extends AbstractGame {
      * Initilializes playerPositions, values are all equal to 8 to
      * symbolize no current placement.
      */
-    public GameState() {
+    public Tsuro() {
         playerPositions = new int[NUM_PLAYERS][NUM_HAND_TILES];
         for (int i = 0; i < NUM_PLAYERS; i++) {
             for (int j = 0; j < NUM_HAND_TILES; j++) {
@@ -43,7 +43,7 @@ public class GameState extends AbstractGame {
      * @param args command-line arguments (not used)
      */
     public static void main(String[] args) {
-        GameState game = new GameState();
+        Tsuro game = new Tsuro();
         game.initBoard();
         game.displayStatus();
     }
@@ -267,6 +267,10 @@ public class GameState extends AbstractGame {
         
     }
 
+    @Override
+    public Tsuro clone() {
+        return (Tsuro) super.clone();
+    }
 }
 
 
