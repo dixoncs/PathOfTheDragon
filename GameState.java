@@ -88,18 +88,18 @@ public class GameState extends AbstractGame {
      */
     public Vector<String> computeMoves() {
         Vector<String> moves = new Vector<>();
-        moves.add(00);
-        moves.add(01);
-        moves.add(02);
-        moves.add(03);        
-        moves.add(10);
-        moves.add(11);
-        moves.add(12);
-        moves.add(13); 
-        moves.add(20);
-        moves.add(21);
-        moves.add(22);
-        moves.add(23);   
+        moves.add("00");
+        moves.add("01");
+        moves.add("02");
+        moves.add("03");        
+        moves.add("10");
+        moves.add("11");
+        moves.add("12");
+        moves.add("13"); 
+        moves.add("20");
+        moves.add("21");
+        moves.add("22");
+        moves.add("23");   
         return moves;
     }
 
