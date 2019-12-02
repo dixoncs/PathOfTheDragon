@@ -21,6 +21,7 @@ compile: GameState.java GameStateTest.java $(JUNIT5_JAR)
 	javac GameBoard.java
 	javac Tile.java
 	javac GameState.java
+	javac Driver.java
 	javac -cp .:$(JUNIT5_JAR) GameStateTest.java
 
 clean:

@@ -41,7 +41,8 @@ public class GameState extends AbstractGame {
      */
     public static void main(String[] args) {
         GameState game = new GameState();
-        game.initBoard();
+        //game.initBoard();
+        game.play(0);
         game.displayStatus();
         System.out.println(game.nextMover().ordinal());
     }
