@@ -121,18 +121,18 @@ public class GameState extends AbstractGame {
      */
     public Vector<String> legalStartPositions() {
         Vector<String> sMoves = new Vector<>();
-        sMoves.add(""); sMoves.add(""); sMoves.add(""); sMoves.add("");
-        sMoves.add(""); 
-        sMoves.add("");
-        sMoves.add("");        
-        sMoves.add("");
-        sMoves.add("");
-        sMoves.add("");
-        sMoves.add(""); 
-        sMoves.add("");
-        sMoves.add("");
-        sMoves.add("");
-        sMoves.add("");
+        sMoves.add("014"); sMoves.add("102"); sMoves.add("402"); sMoves.add("710");
+        sMoves.add("015"); sMoves.add("103"); sMoves.add("403"); sMoves.add("711");
+        sMoves.add("024"); sMoves.add("176"); sMoves.add("476"); sMoves.add("720");
+        sMoves.add("025"); sMoves.add("177"); sMoves.add("477"); sMoves.add("721");
+        sMoves.add("034"); sMoves.add("202"); sMoves.add("502"); sMoves.add("730");
+        sMoves.add("035"); sMoves.add("203"); sMoves.add("503"); sMoves.add("731");
+        sMoves.add("044"); sMoves.add("276"); sMoves.add("576"); sMoves.add("740");
+        sMoves.add("045"); sMoves.add("277"); sMoves.add("577"); sMoves.add("741");
+        sMoves.add("054"); sMoves.add("302"); sMoves.add("602"); sMoves.add("750");
+        sMoves.add("055"); sMoves.add("303"); sMoves.add("603"); sMoves.add("751");
+        sMoves.add("064"); sMoves.add("376"); sMoves.add("676"); sMoves.add("760");
+        sMoves.add("065"); sMoves.add("377"); sMoves.add("677"); sMoves.add("761");
         return sMoves;
     }
 
