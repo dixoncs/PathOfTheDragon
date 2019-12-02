@@ -2,11 +2,36 @@ JUNIT5_JAR = junit-platform-console-standalone-1.2.0.jar
 JUNIT5_RUNNER = org.junit.platform.console.ConsoleLauncher
 CKSTYLE_XML = cs_appstate_checks.xml
 CKSTYLE_COMMAND =  -jar /usr/local/checkstyle-5.5/checkstyle-5.5-all.jar
+PROG_DRIVER = java GameState
 
 default: 
-	@echo "4 available targets: clean - removes editor tmpfiles and .class files"
-	@echo "____________________ compile, test - builds JUnit5 tests"
-	@echo "____________________ chk runs checkstyle"
+	$(PROG_DRIVER)
+
+help:
+	@echo "5 available targets:" 
+	@echo "____________________ help - shows makefile target choices"
+	@echo "____________________ clean - removes editor tmpfiles and .class files"
+	@echo "____________________ compile - compiles all necessary java files" 
+	@echo "____________________ test - builds JUnit5 tests"
+	@echo "____________________ check - runs checkstyle"
+	@echo "________make________ default that runs main in GameState class" 
+
+compile: GameState.java GameStateTest.java $(JUNIT5_JAR)
+	javac AbstractGame.java
+	javac GameBoard.java
+	javac Tile.java
+	javac GameState.java
+	javac -cp .:$(JUNIT5_JAR) GameStateTest.java
+
+clean:
+	rm -f *.class
+
+test: $(JUNIT5_JAR)
+	java -cp .:$(JUNIT5_JAR) $(JUNIT5_RUNNER) --scan-class-path 
+
+check: GameState.java style.xml
+	java $(CKSTYLE_COMMAND) -c style.xml GameState.java
+
 
 # makefile syntax
 # #target-name: files dependent on (can use multiple lines by ending
@@ -16,19 +41,3 @@ default:
 # #etc.
 # #Essential that command lines start with single TAB character
 
-compile: GameState.java GameStateTest.java $(JUNIT5_JAR)
-	javac AbstractGame.java
-	javac GameBoard.java
-	javac Tile.java
-	javac GameState.java
-	javac Driver.java
-	javac -cp .:$(JUNIT5_JAR) GameStateTest.java
-
-clean:
-	rm -f *.class
-
-test: $(JUNIT5_JAR)
-	java -cp .:$(JUNIT5_JAR) $(JUNIT5_RUNNER) --scan-class-path 
-
-chk: GameState.java style.xml
-	java $(CKSTYLE_COMMAND) -c style.xml GameState.java
