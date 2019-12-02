@@ -104,7 +104,7 @@ public class GameState extends AbstractGame {
         moves.add("23");
         if (moveNumber == 0 || moveNumber == 1)
         {
-            return gameBoard.legalStartPositions();
+            return legalStartPositions();
         }
         return moves;
     }
@@ -121,8 +121,8 @@ public class GameState extends AbstractGame {
      */
     public Vector<String> legalStartPositions() {
         Vector<String> sMoves = new Vector<>();
-        sMoves.add("");
-        sMoves.add("");
+        sMoves.add(""); sMoves.add(""); sMoves.add(""); sMoves.add("");
+        sMoves.add(""); 
         sMoves.add("");
         sMoves.add("");        
         sMoves.add("");

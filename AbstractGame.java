@@ -15,7 +15,7 @@ public abstract class AbstractGame implements Cloneable
      * THREE PRIVATE VARIABLES and THREE PRIVATE METHODS.
      */
     private static Scanner stdin = new Scanner(System.in);
-    private int moveNumber = 0;
+    public int moveNumber = 0;
 
     /**
      * THREE CONSTANTS (for a possible game outcome).
