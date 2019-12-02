@@ -7,7 +7,8 @@ import java.util.Vector;
  * @author Mikayla Sage
  * @version 10.30.19
  */
-public class GameState extends AbstractGame {
+public class GameState extends AbstractGame
+{
     public static final int BOARD_DIMENSION = 6;
     public static final int DISPLAY_DIMENSION = 48;
     public static final int CONVERSION_ROWS = 36;
@@ -27,10 +28,13 @@ public class GameState extends AbstractGame {
      * Initilializes playerPositions, values are all equal to 8 to
      * symbolize no current placement.
      */
-    public GameState() {
+    public GameState()
+    {
         playerPositions = new int[NUM_PLAYERS][NUM_HAND_TILES];
-        for (int i = 0; i < NUM_PLAYERS; i++) {
-            for (int j = 0; j < NUM_HAND_TILES; j++) {
+        for (int i = 0; i < NUM_PLAYERS; i++)
+        {
+            for (int j = 0; j < NUM_HAND_TILES; j++)
+            {
                 playerPositions[i][j] = 8;
             }
         }
@@ -42,7 +46,8 @@ public class GameState extends AbstractGame {
      * Main method.
      * @param args command-line arguments (not used)
      */
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         GameState game = new GameState();
         //game.initBoard();
         game.play(0);
@@ -52,14 +57,19 @@ public class GameState extends AbstractGame {
     /**
      * Print all tiles for a player's hand
      */
-    public void printAllTiles() {
-        if (nextMover() == Player.human) {
-            for (int i = 0; i < NUM_HAND_TILES; i++) {
+    public void printAllTiles()
+    {
+        if (nextMover() == Player.human)
+        {
+            for (int i = 0; i < NUM_HAND_TILES; i++)
+            {
                 playerHands[HUMAN_INDEX][i].printTile();
             }
         }
-        else {
-            for (int i = 0; i < NUM_HAND_TILES; i++) {
+        else
+        {
+            for (int i = 0; i < NUM_HAND_TILES; i++)
+            {
                 playerHands[COMPUTER_INDEX][i].printTile();
             }
         }
@@ -69,9 +79,12 @@ public class GameState extends AbstractGame {
      * Helper method for print testing method to initialize GameBoard 
      * with random tiles.
      */
-    public void initBoard() {
-        for (int i = 0; i < BOARD_DIMENSION; i++) {
-            for (int j = 0; j < BOARD_DIMENSION; j++) {
+    public void initBoard()
+    {
+        for (int i = 0; i < BOARD_DIMENSION; i++)
+        {
+            for (int j = 0; j < BOARD_DIMENSION; j++)
+            {
                 gameBoard.board[i][j] = new Tile();
             }
         }
@@ -88,7 +101,8 @@ public class GameState extends AbstractGame {
      *  @return Vector that contains all the legal moves that can currently be
      *      made in the game
      */
-    public Vector<String> computeMoves() {
+    public Vector<String> computeMoves()
+    {
         Vector<String> moves = new Vector<>();
         moves.add("00");
         moves.add("01");
@@ -119,7 +133,8 @@ public class GameState extends AbstractGame {
      *  @author Courtney Dixon
      *  @return sMoves A vector that contains all the legal starting positions
      */
-    public Vector<String> legalStartPositions() {
+    public Vector<String> legalStartPositions()
+    {
         Vector<String> sMoves = new Vector<>();
         sMoves.add("014"); sMoves.add("102"); sMoves.add("402"); sMoves.add("710");
         sMoves.add("015"); sMoves.add("103"); sMoves.add("403"); sMoves.add("711");
@@ -144,9 +159,12 @@ public class GameState extends AbstractGame {
      * @author Mikayla Sage
      * @version 10.30.19
      */
-    public void displayStatus() {
-        for (int i = 0; i < BOARD_DIMENSION; i++) {
-            for (int j = 0; j < BOARD_DIMENSION; j++) {
+    public void displayStatus()
+    {
+        for (int i = 0; i < BOARD_DIMENSION; i++)
+        {
+            for (int j = 0; j < BOARD_DIMENSION; j++)
+            {
                 System.out.println("[" + i + "," + j + "]");
                 if (gameBoard.board[i][j] != null)
                 {
@@ -154,7 +172,6 @@ public class GameState extends AbstractGame {
                 }
             }
         }
-
     }
 
     /**
@@ -168,9 +185,8 @@ public class GameState extends AbstractGame {
      *      the human; negative numbers favor the computer; magnitude
      *      matters.
      */
-    public double evaluate() {
-
-
+    public double evaluate()
+    {
         return 0;
     }
 
@@ -179,12 +195,14 @@ public class GameState extends AbstractGame {
      *
      * @return True, if the game is over.
      */
-    public boolean isGameOver() {
+    public boolean isGameOver()
+    {
        if(playerPositions[0][0] == -1 || playerPositions[1][0] == -1)
        {
            return true;
        }
-       else {
+       else
+       {
            return false;
        }
     }
@@ -198,7 +216,7 @@ public class GameState extends AbstractGame {
      */
     public boolean isLegal(String move)
     {
-        if(move.length() == 2) 
+        /*if(move.length() == 2) 
         {
             if((move.charAt(0) == '0' || move.charAt(0) == '1' || move.charAt(0) == '2') 
                 && (move.charAt(1) == '0' || move.charAt(1) == '1' || move.charAt(1) == '2'
@@ -208,7 +226,8 @@ public class GameState extends AbstractGame {
             }
             return false;
         }
-        return false;
+        return false;*/
+        return computeMoves().contains(move);
     }
 
     /**
@@ -218,23 +237,29 @@ public class GameState extends AbstractGame {
      * @param move
      *      The string representation of the move.
      */
-    public void makeMove(String move) {
-        if (isLegal(move)) {
+    public void makeMove(String move)
+    {
+        if (isLegal(move))
+        {
             int k = Integer.parseInt(String.valueOf(move.charAt(0)));
             int r = Integer.parseInt(String.valueOf(move.charAt(1)));
             Tile t;
             
-            if (nextMover() == Player.human) {
+            if (nextMover() == Player.human)
+            {
                 t = playerHands[HUMAN_INDEX][k];
             }
-            else {
+            else
+            {
                 t = playerHands[COMPUTER_INDEX][k];
             }
             
-            try {
+            try
+            {
                 t.rotateTile(r);
             }
-            catch (Exception e) {
+            catch (Exception e)
+            {
                 System.out.println(e);
             }
             
@@ -255,43 +280,52 @@ public class GameState extends AbstractGame {
      * @param index
      *      The index of the player's hand to be replaced.
      */
-    public void updatePlayerHand(int index) {
-        if (nextMover() == Player.human) {
+    public void updatePlayerHand(int index) 
+    {
+        if (nextMover() == Player.human)
+        {
             playerHands[HUMAN_INDEX][index] = new Tile();
         }
-        else {
+        else
+        {
             playerHands[COMPUTER_INDEX][index] = new Tile();
         }
     }
 
-    public int[] getNewTileLoc() {
+    public int[] getNewTileLoc()
+    {
         int p;
-        if (nextMover() == Player.human) {
+        if (nextMover() == Player.human)
+        {
             p = HUMAN_INDEX;
         }
-        else {
+        else
+        {
             p = COMPUTER_INDEX;
         }
 
         int[] loc = new int[2];
 
-        if (playerPositions[p][2] == 0 || playerPositions[p][2] == 1) {
+        if (playerPositions[p][2] == 0 || playerPositions[p][2] == 1)
+        {
             loc[0] = playerPositions[p][0] - 1;
             loc[1] = playerPositions[p][1];
         }
-        else if (playerPositions[p][2] == 2 || playerPositions[p][2] == 3) {
+        else if (playerPositions[p][2] == 2 || playerPositions[p][2] == 3)
+        {
             loc[0] = playerPositions[p][0];
             loc[1] = playerPositions[p][1] + 1;
         }
-        else if (playerPositions[p][2] == 4 || playerPositions[p][2] == 5) {
+        else if (playerPositions[p][2] == 4 || playerPositions[p][2] == 5)
+        {
             loc[0] = playerPositions[p][0] + 1;
             loc[1] = playerPositions[p][1];
         }
-        else {
+        else
+        {
             loc[0] = playerPositions[p][0];
             loc[1] = playerPositions[p][1] - 1;
         }
-
         return loc;
     }
 
@@ -305,17 +339,18 @@ public class GameState extends AbstractGame {
      * @param tile
      *      tiles to be added to the board from player's hand
      */
-    public void updateGameBoard(int i, int j, Tile tile) {
+    public void updateGameBoard(int i, int j, Tile tile)
+    {
         gameBoard.board[i][j] = tile;
     }
 
     /**
      * Helper method to update player positions.
      */
-    public void updatePlayerPositions() {
+    public void updatePlayerPositions()
+    {
         
     }
-
 }
 
 
