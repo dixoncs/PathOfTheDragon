@@ -78,12 +78,57 @@ public class GameState extends AbstractGame {
      *  made in the game. It is called only if the game is not over, so the
      *  Vector that it returns must contains at least one move. These moves are
      *  all Java strings.
-     *
+     *  
+     *  @author Courtney Dixon
      *  @return Vector that contains all the legal moves that can currently be
      *      made in the game
      */
     public Vector<String> computeMoves() {
-        return null;
+        Vector<String> moves = new Vector<>();
+        moves.add("00");
+        moves.add("01");
+        moves.add("02");
+        moves.add("03");        
+        moves.add("10");
+        moves.add("11");
+        moves.add("12");
+        moves.add("13"); 
+        moves.add("20");
+        moves.add("21");
+        moves.add("22");
+        moves.add("23");
+        if (moveNumber == 0 || moveNumber == 1)
+        {
+            return gameBoard.legalStartPositions();
+        }
+        return moves;
+    }
+
+    /**
+     *  Gets a Vector that contains all the legal starting positions that can 
+     *  currently be made for the first and second moves of the game. It is 
+     *  called only if the game is in the first two moves. If it is the second
+     *  move, then the vector no longer has the position chosen in move number
+     *  one. These moves are all Java strings.
+     *  
+     *  @author Courtney Dixon
+     *  @return sMoves A vector that contains all the legal starting positions
+     */
+    public Vector<String> legalStartPositions() {
+        Vector<String> sMoves = new Vector<>();
+        sMoves.add("");
+        sMoves.add("");
+        sMoves.add("");
+        sMoves.add("");        
+        sMoves.add("");
+        sMoves.add("");
+        sMoves.add("");
+        sMoves.add(""); 
+        sMoves.add("");
+        sMoves.add("");
+        sMoves.add("");
+        sMoves.add("");
+        return sMoves;
     }
 
 
