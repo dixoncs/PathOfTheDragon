@@ -8,7 +8,7 @@ import java.util.HashMap;
 public class GameBoard {
 
     public Tile[][] board;
-    public HashMap<String, String> tilePaths;
+    public static HashMap<String, String> tilePaths;
 
     public GameBoard() {
         board = new Tile[6][6];
@@ -44,7 +44,7 @@ public class GameBoard {
         switch (k) {
             case 0:
             case 1:
-                if (0 < j) {
+                if (1 < j) {
                     neighborJ = j;
                     neighborJ--;
                     neighborK = neighborMap[k];
@@ -52,7 +52,7 @@ public class GameBoard {
                 break;
             case 2:
             case 3:
-                if (5 > i) {
+                if (6 > i) {
                     neighborI = i;
                     neighborI++;
                     neighborK = neighborMap[k];
@@ -60,7 +60,7 @@ public class GameBoard {
                 break;
             case 4:
             case 5:
-                if (5 > j) {
+                if (6 > j) {
                     neighborJ = j;
                     neighborJ++;
                     neighborK = neighborMap[k];
@@ -68,7 +68,7 @@ public class GameBoard {
                 break;
             case 6:
             case 7:
-                if (0 < i) {
+                if (1 < i) {
                     neighborI = i;
                     neighborI--;
                     neighborK = neighborMap[k];
@@ -103,6 +103,20 @@ public class GameBoard {
             }
         }
         return false;
+    }
+
+    public static void updatePaths(int i, int j, Tile t)
+    {
+        for (int index = 0; index < t.getPoints().length; index++)
+        {
+            String from = "" + i + j + index;
+            String to = "" + i + j + t.getPoints()[index];
+            tilePaths.put(from, to);
+
+            String neighbor = neighboringPoint(from);
+            tilePaths.put(from, neighbor);
+            tilePaths.put(neighbor, from);
+        }
     }
 }
 
