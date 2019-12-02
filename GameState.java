@@ -218,99 +218,42 @@ public class GameState extends AbstractGame {
             int k = Integer.parseInt(String.valueOf(move.charAt(0)));
             int r = Integer.parseInt(String.valueOf(move.charAt(1)));
             Tile t;
+            Player p = nextMover();
+            int index;
             
-            if (nextMover() == Player.human) {
-                t = playerHands[HUMAN_INDEX][k];
+            if (p == Player.human) {
+                index = HUMAN_INDEX;
             }
             else {
-                t = playerHands[COMPUTER_INDEX][k];
+                index = COMPUTER_INDEX;
             }
+
+            t = playerHands[index][k];
+            t.rotateTile(r);
+            playerHands[index][k] = new Tile();
             
-            try {
-                t.rotateTile(r);
+	        int[] loc = new int[2];
+
+            if (playerPositions[index][2] == 0 || playerPositions[index][2] == 1) {
+                loc[0] = playerPositions[index][0] - 1;
+                loc[1] = playerPositions[index][1];
             }
-            catch (Exception e) {
-                System.out.println(e);
+            else if (playerPositions[index][2] == 2 || playerPositions[index][2] == 3) {
+                loc[0] = playerPositions[index][0];
+                loc[1] = playerPositions[index][1] + 1;
             }
-            
-            updatePlayerHand(k);
+            else if (playerPositions[index][2] == 4 || playerPositions[index][2] == 5) {
+                loc[0] = playerPositions[index][0] + 1;
+                loc[1] = playerPositions[index][1];
+            }
+            else {
+                loc[0] = playerPositions[index][0];
+                loc[1] = playerPositions[index][1] - 1;
+            }
 
-            int[] loc = getNewTileLoc();
-
-            updateGameBoard(loc[0], loc[1], t);
-            
-            //updatePaths();
-            //updatePlayerPositions();
+            gameBoard.board[loc[0]][loc[1]] = t;
         }
-    }
-
-    /**
-     * Helper method to update the player hand. Used by makeMove.
-     *
-     * @param index
-     *      The index of the player's hand to be replaced.
-     */
-    public void updatePlayerHand(int index) {
-        if (nextMover() == Player.human) {
-            playerHands[HUMAN_INDEX][index] = new Tile();
-        }
-        else {
-            playerHands[COMPUTER_INDEX][index] = new Tile();
-        }
-    }
-
-    public int[] getNewTileLoc() {
-        int p;
-        if (nextMover() == Player.human) {
-            p = HUMAN_INDEX;
-        }
-        else {
-            p = COMPUTER_INDEX;
-        }
-
-        int[] loc = new int[2];
-
-        if (playerPositions[p][2] == 0 || playerPositions[p][2] == 1) {
-            loc[0] = playerPositions[p][0] - 1;
-            loc[1] = playerPositions[p][1];
-        }
-        else if (playerPositions[p][2] == 2 || playerPositions[p][2] == 3) {
-            loc[0] = playerPositions[p][0];
-            loc[1] = playerPositions[p][1] + 1;
-        }
-        else if (playerPositions[p][2] == 4 || playerPositions[p][2] == 5) {
-            loc[0] = playerPositions[p][0] + 1;
-            loc[1] = playerPositions[p][1];
-        }
-        else {
-            loc[0] = playerPositions[p][0];
-            loc[1] = playerPositions[p][1] - 1;
-        }
-
-        return loc;
-    }
-
-    /**
-     * Helper method to update the game board after Tile is played.
-     *
-     * @param i
-     *      i position on the gameboard
-     * @param j
-     *      j position on the gameboard
-     * @param tile
-     *      tiles to be added to the board from player's hand
-     */
-    public void updateGameBoard(int i, int j, Tile tile) {
-        gameBoard.board[i][j] = tile;
-    }
-
-    /**
-     * Helper method to update player positions.
-     */
-    public void updatePlayerPositions() {
-        
-    }
-
+    }      
 }
 
 
