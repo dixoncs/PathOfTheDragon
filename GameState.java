@@ -212,8 +212,29 @@ public class GameState extends AbstractGame {
 
             updateGameBoard(loc[0], loc[1], t);
             
-            //updatePaths();
+            GameBoard.updatePaths(loc[0], loc[1], t);
+
             //updatePlayerPositions();
+            int row;
+            if (p == Player.human)
+                row = 0;
+            else if (p == Player.computer)
+                row = 1;
+            else row = 2;
+
+            // get current ijk of player. Check if it's a key in the hashtable
+            String playerPosition = "" + playerPositions[row][0] + playerPositions[row][1] + playerPositions[row][2];
+
+            // while the current player position has a value it's mapped to get that value and keep looking.
+            while (GameBoard.tilePaths.containsKey(playerPosition))
+            {
+                playerPosition = GameBoard.tilePaths.get(playerPosition);
+            }
+
+            // update playerPositions array with point gotten from hashtable
+            playerPositions[row][0] = playerPosition.charAt(0);
+            playerPositions[row][1] = playerPosition.charAt(1);
+            playerPositions[row][2] = playerPosition.charAt(2);
         }
     }
 
