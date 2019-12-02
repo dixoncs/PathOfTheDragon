@@ -98,7 +98,10 @@ public class GameState extends AbstractGame {
         for (int i = 0; i < BOARD_DIMENSION; i++) {
             for (int j = 0; j < BOARD_DIMENSION; j++) {
                 System.out.println("[" + i + "," + j + "]");
-                gameBoard.board[i][j].printTile();
+                if (gameBoard.board[i][j] != null)
+                {
+                    gameBoard.board[i][j].printTile();
+                }
             }
         }
 
@@ -145,7 +148,7 @@ public class GameState extends AbstractGame {
      */
     public boolean isLegal(String move)
     {
-        if(move.length() < 2) 
+        if(move.length() == 2) 
         {
             if((move.charAt(0) == '0' || move.charAt(0) == '1' || move.charAt(0) == '2') 
                 && (move.charAt(1) == '0' || move.charAt(1) == '1' || move.charAt(1) == '2'
