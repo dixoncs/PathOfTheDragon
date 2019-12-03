@@ -55,9 +55,12 @@ public class GameState extends AbstractGame
     /**
      * Print all tiles for a player's hand.
      */
-    public void printPlayerHand() {
-        for (int i = 0; i < NUM_HAND_TILES; i++) {
-            for (int j = 0; j <= 3; j++) {
+    public void printPlayerHand()
+    {
+        for (int i = 0; i < NUM_HAND_TILES; i++)
+        {
+            for (int j = 0; j <= 3; j++)
+            {
                 System.out.print("[" + i);
                 System.out.println(j + "]");
                 playerHands[nextMover().ordinal()][i].rotateTile(j).printTile();
@@ -194,7 +197,8 @@ public class GameState extends AbstractGame
         compPos += Integer.toString(playerPositions[1][1]);
         compPos += Integer.toString(playerPositions[1][2]);
         
-        if (gameBoard.perimeter(humanPos) || gameBoard.perimeter(compPos))
+        if (gameBoard.perimeter(humanPos) || gameBoard.perimeter(compPos)
+            && (moveNumber != 0 || moveNumber != 1))
         {
             return true;
         }
@@ -242,9 +246,13 @@ public class GameState extends AbstractGame
             int index;
             
             if (p == Player.human)
+            {
                 index = HUMAN_INDEX;
+            }
             else
+            {
                 index = COMPUTER_INDEX;
+            }
 
             t = playerHands[index][k];
             t.rotateTile(r);
@@ -278,15 +286,26 @@ public class GameState extends AbstractGame
             //updatePlayerPositions();
             int row;
             if (p == Player.human)
+            {
                 row = 0;
+            }
             else if (p == Player.computer)
+            {
                 row = 1;
-            else row = 2;
+            }
+            else
+            {
+                row = 2;
+            }
 
             // get current ijk of player. Check if it's a key in the hashtable
-            String playerPosition = "" + playerPositions[row][0] + playerPositions[row][1] + playerPositions[row][2];
+            String playerPosition = "";
+            playerPosition += playerPositions[row][0]; 
+            playerPosition += playerPositions[row][1];
+            playerPosition += playerPositions[row][2];
 
-            // while the current player position has a value it's mapped to get that value and keep looking.
+            // while the current player position has a value,
+            // it's mapped to get that value and keep looking.
             while (GameBoard.tilePaths.containsKey(playerPosition))
             {
                 playerPosition = GameBoard.tilePaths.get(playerPosition);
