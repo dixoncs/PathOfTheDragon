@@ -116,8 +116,14 @@ public class GameBoard {
             tilePaths.put(from, to);
 
             String neighbor = neighboringPoint(from);
-            tilePaths.put(from, neighbor);
-            tilePaths.put(neighbor, from);
+            if (tilePaths.containsKey(neighbor))
+            {
+                tilePaths.put(from, neighbor);
+            }
+            else if (tilePaths.containsValue(neighbor))
+            {
+                tilePaths.put(neighbor, from);
+            }
         }
     }
 }
