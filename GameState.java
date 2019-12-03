@@ -55,7 +55,7 @@ public class GameState extends AbstractGame
     }
 
     /**
-     * Print all tiles for a player's hand
+     * Print all tiles for a player's hand.
      */
     public void printAllTiles()
     {
@@ -197,14 +197,18 @@ public class GameState extends AbstractGame
      */
     public boolean isGameOver()
     {
-       if(playerPositions[0][0] == -1 || playerPositions[1][0] == -1)
-       {
-           return true;
-       }
-       else
-       {
-           return false;
-       }
+        String humanPos = Integer.toString(playerPositions[0][0]);
+        String compPos = Integer.toString(playerPositions[1][0]);
+        humanPos += Integer.toString(playerPositions[0][1]);
+        humanPos += Integer.toString(playerPositions[0][2]);
+        compPos += Integer.toString(playerPositions[1][1]);
+        compPos += Integer.toString(playerPositions[1][2]);
+        
+        if (gameBoard.perimeter(humanPos) || gameBoard.perimeter(compPos))
+        {
+            return true;
+        }
+        return false;
     }
 
     /**

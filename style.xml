@@ -36,7 +36,7 @@ Checkstyle configuration for CS department at Appalachian State University
             <property name="severity" value="warning"/>
             <property name="tabWidth" value="4"/>
             <property name="ignorePattern" value="^$"/>
-            <property name="max" value="80"/>            
+            <property name="max" value="100"/>            
         </module>
 
         <!-- Section 5.1 -->
@@ -63,8 +63,8 @@ Checkstyle configuration for CS department at Appalachian State University
 
         <!-- Section 7.[4-9] -->
         <module name="LeftCurly">
-            <property name="option" value="eol"/>
-            <!--<property name="option" value="nl"/> -->
+            <!--<property name="option" value="eol"/> -->
+            <property name="option" value="nl"/>
             <!--<property name="maxLineLength" value="80"/> -->
         </module>
         <module name="RightCurly">
