@@ -194,7 +194,8 @@ public class GameState extends AbstractGame
         compPos += Integer.toString(playerPositions[1][1]);
         compPos += Integer.toString(playerPositions[1][2]);
         
-        if (gameBoard.perimeter(humanPos) || gameBoard.perimeter(compPos))
+        if (gameBoard.perimeter(humanPos) || gameBoard.perimeter(compPos)
+            && (moveNumber != 0 || moveNumber != 1))
         {
             return true;
         }
