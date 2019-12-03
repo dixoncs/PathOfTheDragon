@@ -11,7 +11,7 @@ public class GameBoard {
     public static HashMap<String, String> tilePaths;
 
     public GameBoard() {
-        board = new Tile[6][6];
+        board = new Tile[8][8];
         tilePaths = new HashMap<String, String>();
     }
 
