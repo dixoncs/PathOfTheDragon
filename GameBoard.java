@@ -44,7 +44,7 @@ public class GameBoard {
         switch (k) {
             case 0:
             case 1:
-                if (1 < j) {
+                if (0 < j) {
                     neighborJ = j;
                     neighborJ--;
                     neighborK = neighborMap[k];
@@ -52,7 +52,7 @@ public class GameBoard {
                 break;
             case 2:
             case 3:
-                if (6 > i) {
+                if (8 > i) {
                     neighborI = i;
                     neighborI++;
                     neighborK = neighborMap[k];
@@ -60,7 +60,7 @@ public class GameBoard {
                 break;
             case 4:
             case 5:
-                if (6 > j) {
+                if (8 > j) {
                     neighborJ = j;
                     neighborJ++;
                     neighborK = neighborMap[k];
@@ -68,7 +68,7 @@ public class GameBoard {
                 break;
             case 6:
             case 7:
-                if (1 < i) {
+                if (0 < i) {
                     neighborI = i;
                     neighborI--;
                     neighborK = neighborMap[k];
