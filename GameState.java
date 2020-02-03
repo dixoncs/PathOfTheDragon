@@ -260,9 +260,9 @@ public class GameState extends AbstractGame
                 playerPositions[player][0] = Integer.parseInt(String.valueOf(move.charAt(0)));
                 playerPositions[player][1] = Integer.parseInt(String.valueOf(move.charAt(1)));
                 playerPositions[player][2] = Integer.parseInt(String.valueOf(move.charAt(2)));
-                if(startPostions.contains(move))
+                if(startPositions.contains(move))
                 {
-                    startPostions.remove(move);
+                    startPositions.remove(move);
                 }
                 else
                 {
