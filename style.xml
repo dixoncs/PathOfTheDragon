@@ -36,7 +36,7 @@ Checkstyle configuration for CS department at Appalachian State University
             <property name="severity" value="warning"/>
             <property name="tabWidth" value="4"/>
             <property name="ignorePattern" value="^$"/>
-            <property name="max" value="100"/>            
+            <property name="max" value="150"/>            
         </module>
 
         <!-- Section 5.1 -->
@@ -48,7 +48,7 @@ Checkstyle configuration for CS department at Appalachian State University
         </module>        <!-- Section 5.1.3 -->
         <module name="JavadocMethod"/>
         <!-- Section 5.2.3 -->
-        <module name="TrailingComment"/>
+        <!-- <module name="TrailingComment"/> -->
 
         <!-- Section 6.1 -->
 	<module name="MultipleVariableDeclarations"/>

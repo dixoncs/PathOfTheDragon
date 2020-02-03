@@ -25,7 +25,7 @@ public class GameState extends AbstractGame
      * Initilializes playerPositions, values are all equal to 8 to
      * symbolize no current placement.
      */
-    public GameState()
+    public GameState() 
     {
         playerPositions = new int[NUM_PLAYERS][NUM_HAND_TILES];
         for (int i = 0; i < NUM_PLAYERS; i++)
@@ -33,9 +33,18 @@ public class GameState extends AbstractGame
             for (int j = 0; j < NUM_HAND_TILES; j++)
             {
                 playerPositions[i][j] = 8;
+                //playerPositions[i][j] = -1;
+                //playerPositions[i][j] = 7;
             }
         }
         playerHands = new Tile[NUM_PLAYERS][NUM_HAND_TILES];
+        for (int m = 0; m < NUM_PLAYERS; m++)
+        {
+            for (int n = 0; n < NUM_HAND_TILES; n++)
+            {
+                playerHands[m][n] = new Tile();
+            }
+        }
         gameBoard = new GameBoard();
     }
 
@@ -113,6 +122,13 @@ public class GameState extends AbstractGame
         {
             return legalStartPositions();
         }
+        else
+        {
+            for (String m : moves)
+            {
+                System.out.println(m);
+            }
+        } 
         return moves;
     }
 
@@ -141,6 +157,10 @@ public class GameState extends AbstractGame
         sMoves.add("055"); sMoves.add("303"); sMoves.add("603"); sMoves.add("751");
         sMoves.add("064"); sMoves.add("376"); sMoves.add("676"); sMoves.add("760");
         sMoves.add("065"); sMoves.add("377"); sMoves.add("677"); sMoves.add("761");
+        for (String m : sMoves)
+        {
+            System.out.println(m);
+        } 
         return sMoves;
     }
 
@@ -225,6 +245,7 @@ public class GameState extends AbstractGame
             return false;
         }
         return false;*/
+        System.out.println(move);
         return computeMoves().contains(move);
     }
 

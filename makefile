@@ -2,7 +2,7 @@ JUNIT5_JAR = junit-platform-console-standalone-1.2.0.jar
 JUNIT5_RUNNER = org.junit.platform.console.ConsoleLauncher
 CKSTYLE_XML = cs_appstate_checks.xml
 CKSTYLE_COMMAND =  -jar /usr/local/checkstyle-5.5/checkstyle-5.5-all.jar
-PROG_DRIVER = java GameState
+PROG_DRIVER = @java GameState
 
 default: 
 	$(PROG_DRIVER)
@@ -21,17 +21,17 @@ compile: GameState.java GameStateTest.java $(JUNIT5_JAR)
 	javac GameBoard.java
 	javac Tile.java
 	javac GameState.java
-	javac -cp .:$(JUNIT5_JAR) GameStateTest.java
+	@javac -cp .:$(JUNIT5_JAR) GameStateTest.java
 
 clean:
 	rm -f *.class
 
 test: $(JUNIT5_JAR)
-	java -cp .:$(JUNIT5_JAR) $(JUNIT5_RUNNER) --scan-class-path 
+	@java -cp .:$(JUNIT5_JAR) $(JUNIT5_RUNNER) --scan-class-path 
 
 check: GameState.java style.xml
-	java $(CKSTYLE_COMMAND) -c style.xml GameState.java
-
+	@java $(CKSTYLE_COMMAND) -c style.xml GameState.java
+#	@java $(CKSTYLE_COMMAND) -c style.xml *.java
 
 # makefile syntax
 # #target-name: files dependent on (can use multiple lines by ending
