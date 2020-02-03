@@ -47,20 +47,20 @@ public class GameState extends AbstractGame
         }
         gameBoard = new GameBoard();
         
-        startPositions = legalStartPositons();
+        startPositions = legalStartPositions();
         validMoves = new Vector<>();
-        moves.add("00");
-        moves.add("01");
-        moves.add("02");
-        moves.add("03");        
-        moves.add("10");
-        moves.add("11");
-        moves.add("12");
-        moves.add("13"); 
-        moves.add("20");
-        moves.add("21");
-        moves.add("22");
-        moves.add("23");
+        validMoves.add("00");
+        validMoves.add("01");
+        validMoves.add("02");
+        validMoves.add("03");        
+        validMoves.add("10");
+        validMoves.add("11");
+        validMoves.add("12");
+        validMoves.add("13"); 
+        validMoves.add("20");
+        validMoves.add("21");
+        validMoves.add("22");
+        validMoves.add("23");
     }
 
     /**
