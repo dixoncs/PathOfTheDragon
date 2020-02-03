@@ -32,9 +32,7 @@ public class GameState extends AbstractGame
         {
             for (int j = 0; j < NUM_HAND_TILES; j++)
             {
-                playerPositions[i][j] = 8;
-                //playerPositions[i][j] = -1;
-                //playerPositions[i][j] = 7;
+                playerPositions[i][j] = -1;
             }
         }
         playerHands = new Tile[NUM_PLAYERS][NUM_HAND_TILES];
