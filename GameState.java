@@ -266,7 +266,7 @@ public class GameState extends AbstractGame
                 }
                 else
                 {
-                    throw new Exception("Did not enter a legal start position");
+                    throw new RuntimeException("Did not enter a legal start position");
                 }
                 return;
             }
