@@ -258,10 +258,18 @@ public class GameState extends AbstractGame
     {
         if (isLegal(move))
         {
+            int player = nextMover().ordinal();
+            if (moveNumber < 2) 
+            {
+                playerPositions[player][0] = Integer.parseInt(String.valueOf(move.charAt(0)));
+                playerPositions[player][1] = Integer.parseInt(String.valueOf(move.charAt(1)));
+                playerPositions[player][2] = Integer.parseInt(String.valueOf(move.charAt(2)));
+                return;
+            }
+                
             int tileIndex = Integer.parseInt(String.valueOf(move.charAt(0)));
             int numRotations = Integer.parseInt(String.valueOf(move.charAt(1)));
             Tile tile;
-            int player = nextMover().ordinal();
 
             tile = playerHands[player][tileIndex];
             tile.rotateTile(numRotations);
