@@ -257,6 +257,7 @@ public class GameState extends AbstractGame
             int player = nextMover().ordinal();
             if (moveNumber < 2) 
             {
+                System.out.println(player);
                 playerPositions[player][0] = Integer.parseInt(String.valueOf(move.charAt(0)));
                 playerPositions[player][1] = Integer.parseInt(String.valueOf(move.charAt(1)));
                 playerPositions[player][2] = Integer.parseInt(String.valueOf(move.charAt(2)));
