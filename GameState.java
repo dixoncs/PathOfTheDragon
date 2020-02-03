@@ -262,68 +262,45 @@ public class GameState extends AbstractGame
         {
             int handIndex = Integer.parseInt(String.valueOf(move.charAt(0)));
             int numRotations = Integer.parseInt(String.valueOf(move.charAt(1)));
-            Tile t;
-            Player p = nextMover();
-            int index;
-            
-            if (p == Player.human)
-            {
-                index = HUMAN_INDEX;
-            }
-            else
-            {
-                index = COMPUTER_INDEX;
-            }
+            Tile tile;
+            int player = nextMover().ordinal();
 
-            t = playerHands[index][handIndex];
-            t.rotateTile(numRotations);
-            playerHands[index][handIndex] = new Tile();
-            int[] loc = new int[2];  
-            if (playerPositions[index][2] == 0 || playerPositions[index][2] == 1) 
+            tile = playerHands[player][handIndex];
+            tile.rotateTile(numRotations);
+            playerHands[player][handIndex] = new Tile();
+            int[] newTileLocation = new int[2];  
+            if (playerPositions[player][2] == 0 || playerPositions[player][2] == 1) 
             {
-                loc[0] = playerPositions[index][0] - 1;
-                loc[1] = playerPositions[index][1];
+                newTileLocation[0] = playerPositions[player][0] - 1;
+                newTileLocation[1] = playerPositions[player][1];
             }
-            else if (playerPositions[index][2] == 2 || playerPositions[index][2] == 3) 
+            else if (playerPositions[player][2] == 2 || playerPositions[player][2] == 3) 
             {
-                loc[0] = playerPositions[index][0];
-                loc[1] = playerPositions[index][1] + 1;
+                newTileLocation[0] = playerPositions[player][0];
+                newTileLocation[1] = playerPositions[player][1] + 1;
             }
-            else if (playerPositions[index][2] == 4 || playerPositions[index][2] == 5) 
+            else if (playerPositions[player][2] == 4 || playerPositions[player][2] == 5) 
             {
-                loc[0] = playerPositions[index][0] + 1;
-                loc[1] = playerPositions[index][1];
+                newTileLocation[0] = playerPositions[player][0] + 1;
+                newTileLocation[1] = playerPositions[player][1];
             }
             else 
             {
-                loc[0] = playerPositions[index][0];
-                loc[1] = playerPositions[index][1] - 1;
+                newTileLocation[0] = playerPositions[player][0];
+                newTileLocation[1] = playerPositions[player][1] - 1;
             }
 
-            gameBoard.board[loc[0]][loc[1]] = t;
+            gameBoard.board[newTileLocation[0]][newTileLocation[1]] = tile;
           
-            GameBoard.updatePaths(loc[0], loc[1], t);
+            GameBoard.updatePaths(newTileLocation[0], newTileLocation[1], tile);
 
             //updatePlayerPositions();
-            int row;
-            if (p == Player.human)
-            {
-                row = 0;
-            }
-            else if (p == Player.computer)
-            {
-                row = 1;
-            }
-            else
-            {
-                row = 2;
-            }
 
             // get current ijk of player. Check if it's a key in the hashtable
             String playerPosition = "";
-            playerPosition += playerPositions[row][0]; 
-            playerPosition += playerPositions[row][1];
-            playerPosition += playerPositions[row][2];
+            playerPosition += playerPositions[player][0]; 
+            playerPosition += playerPositions[player][1];
+            playerPosition += playerPositions[player][2];
 
             // while the current player position has a value,
             // it's mapped to get that value and keep looking.
@@ -333,9 +310,9 @@ public class GameState extends AbstractGame
             }
 
             // update playerPositions array with point gotten from hashtable
-            playerPositions[row][0] = playerPosition.charAt(0);
-            playerPositions[row][1] = playerPosition.charAt(1);
-            playerPositions[row][2] = playerPosition.charAt(2);
+            playerPositions[player][0] = playerPosition.charAt(0);
+            playerPositions[player][1] = playerPosition.charAt(1);
+            playerPositions[player][2] = playerPosition.charAt(2);
         }
     }    
 }
