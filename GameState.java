@@ -260,14 +260,14 @@ public class GameState extends AbstractGame
     {
         if (isLegal(move))
         {
-            int handIndex = Integer.parseInt(String.valueOf(move.charAt(0)));
+            int tileIndex = Integer.parseInt(String.valueOf(move.charAt(0)));
             int numRotations = Integer.parseInt(String.valueOf(move.charAt(1)));
             Tile tile;
             int player = nextMover().ordinal();
 
-            tile = playerHands[player][handIndex];
+            tile = playerHands[player][tileIndex];
             tile.rotateTile(numRotations);
-            playerHands[player][handIndex] = new Tile();
+            playerHands[player][tileIndex] = new Tile();
             int[] newTileLocation = new int[2];  
             if (playerPositions[player][2] == 0 || playerPositions[player][2] == 1) 
             {
