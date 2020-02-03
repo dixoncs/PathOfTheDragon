@@ -260,7 +260,7 @@ public class GameState extends AbstractGame
     {
         if (isLegal(move))
         {
-            int k = Integer.parseInt(String.valueOf(move.charAt(0)));
+            int hand_index = Integer.parseInt(String.valueOf(move.charAt(0)));
             int r = Integer.parseInt(String.valueOf(move.charAt(1)));
             Tile t;
             Player p = nextMover();
@@ -275,9 +275,9 @@ public class GameState extends AbstractGame
                 index = COMPUTER_INDEX;
             }
 
-            t = playerHands[index][k];
+            t = playerHands[index][hand_index];
             t.rotateTile(r);
-            playerHands[index][k] = new Tile();
+            playerHands[index][hand_index] = new Tile();
             int[] loc = new int[2];  
             if (playerPositions[index][2] == 0 || playerPositions[index][2] == 1) 
             {
