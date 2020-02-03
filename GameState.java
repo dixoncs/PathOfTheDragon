@@ -18,6 +18,7 @@ public class GameState extends AbstractGame
     public static GameBoard gameBoard;
     public int[][] playerPositions;
     public Tile[][] playerHands;
+    public Vector<String> startPositions; 
 
     //HUMAN ALWAYS GOES FIRST
 
@@ -44,6 +45,8 @@ public class GameState extends AbstractGame
             }
         }
         gameBoard = new GameBoard();
+        
+        startPositions = legalStartPositons();
     }
 
     /**
@@ -155,10 +158,10 @@ public class GameState extends AbstractGame
         sMoves.add("055"); sMoves.add("303"); sMoves.add("603"); sMoves.add("751");
         sMoves.add("064"); sMoves.add("376"); sMoves.add("676"); sMoves.add("760");
         sMoves.add("065"); sMoves.add("377"); sMoves.add("677"); sMoves.add("761");
-        for (String m : sMoves)
+        /*for (String m : sMoves)
         {
             System.out.println(m);
-        } 
+        }*/ 
         return sMoves;
     }
 
@@ -253,6 +256,10 @@ public class GameState extends AbstractGame
                 playerPositions[player][0] = Integer.parseInt(String.valueOf(move.charAt(0)));
                 playerPositions[player][1] = Integer.parseInt(String.valueOf(move.charAt(1)));
                 playerPositions[player][2] = Integer.parseInt(String.valueOf(move.charAt(2)));
+                if(startPostions.contains(move)
+                {
+                    startPostions.remove(move);
+                }
                 return;
             }
                 
