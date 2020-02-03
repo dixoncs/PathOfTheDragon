@@ -261,7 +261,7 @@ public class GameState extends AbstractGame
         if (isLegal(move))
         {
             int handIndex = Integer.parseInt(String.valueOf(move.charAt(0)));
-            int num_rotations = Integer.parseInt(String.valueOf(move.charAt(1)));
+            int numRotations = Integer.parseInt(String.valueOf(move.charAt(1)));
             Tile t;
             Player p = nextMover();
             int index;
@@ -276,7 +276,7 @@ public class GameState extends AbstractGame
             }
 
             t = playerHands[index][handIndex];
-            t.rotateTile(rotation);
+            t.rotateTile(numRotations);
             playerHands[index][handIndex] = new Tile();
             int[] loc = new int[2];  
             if (playerPositions[index][2] == 0 || playerPositions[index][2] == 1) 
