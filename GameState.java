@@ -4,8 +4,8 @@ import java.util.Vector;
 /**
  * GameState class.
  *
- * @author Mikayla Sage
- * @version 10.30.19
+ * @author Mikayla Sage, Courtney Dixon
+ * @version 02.03.20
  */
 public class GameState extends AbstractGame
 {
