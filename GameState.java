@@ -19,6 +19,7 @@ public class GameState extends AbstractGame
     public int[][] playerPositions;
     public Tile[][] playerHands;
     public Vector<String> startPositions; 
+    public Vector<String> validMoves;
 
     //HUMAN ALWAYS GOES FIRST
 
@@ -47,6 +48,19 @@ public class GameState extends AbstractGame
         gameBoard = new GameBoard();
         
         startPositions = legalStartPositons();
+        validMoves = new Vector<>();
+        moves.add("00");
+        moves.add("01");
+        moves.add("02");
+        moves.add("03");        
+        moves.add("10");
+        moves.add("11");
+        moves.add("12");
+        moves.add("13"); 
+        moves.add("20");
+        moves.add("21");
+        moves.add("22");
+        moves.add("23");
     }
 
     /**
@@ -106,22 +120,11 @@ public class GameState extends AbstractGame
      */
     public Vector<String> computeMoves()
     {
-        Vector<String> moves = new Vector<>();
-        moves.add("00");
-        moves.add("01");
-        moves.add("02");
-        moves.add("03");        
-        moves.add("10");
-        moves.add("11");
-        moves.add("12");
-        moves.add("13"); 
-        moves.add("20");
-        moves.add("21");
-        moves.add("22");
-        moves.add("23");
+        Vector<String> moves = null;
+        
         if (moveNumber == 0 || moveNumber == 1)
         {
-            return legalStartPositions();
+            moves = startPositions;
         }
         else
         {
@@ -129,6 +132,7 @@ public class GameState extends AbstractGame
             {
                 System.out.println(m);
             }
+            moves = validMoves;
         } 
         return moves;
     }
@@ -256,9 +260,13 @@ public class GameState extends AbstractGame
                 playerPositions[player][0] = Integer.parseInt(String.valueOf(move.charAt(0)));
                 playerPositions[player][1] = Integer.parseInt(String.valueOf(move.charAt(1)));
                 playerPositions[player][2] = Integer.parseInt(String.valueOf(move.charAt(2)));
-                if(startPostions.contains(move)
+                if(startPostions.contains(move))
                 {
                     startPostions.remove(move);
+                }
+                else
+                {
+                    throw new Exception("Did not enter a legal start position");
                 }
                 return;
             }
