@@ -232,17 +232,6 @@ public class GameState extends AbstractGame
      */
     public boolean isLegal(String move)
     {
-        /*if(move.length() == 2) 
-        {
-            if((move.charAt(0) == '0' || move.charAt(0) == '1' || move.charAt(0) == '2') 
-                && (move.charAt(1) == '0' || move.charAt(1) == '1' || move.charAt(1) == '2'
-                || move.charAt(1) == '3'))
-            {
-                return true;
-            }
-            return false;
-        }
-        return false;*/
         System.out.println(move);
         return computeMoves().contains(move);
     }
