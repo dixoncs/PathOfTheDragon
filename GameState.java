@@ -10,7 +10,9 @@ import java.util.Vector;
 public class GameState extends AbstractGame
 {
     public static final int BOARD_DIMENSION = 6;
-    public static final int NUM_PLAYERS = 2;
+    public static final int NUM_PLAYERS = 3;
+    //there is no third player, it is place holder for nobody from the player enum type abstract class
+    //do not change the number of players, there are still two players, you have no friends
     public static final int NUM_HAND_TILES = 3;
     public static final int HUMAN_INDEX = 0;
     public static final int COMPUTER_INDEX = 1;
