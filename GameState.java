@@ -131,10 +131,10 @@ public class GameState extends AbstractGame
         // all moves after the first two in the game
         else
         {
-            for (String m : moves)
+            /*for (String m : moves)
             {
                 System.out.println(m);
-            }
+            }*/
             moves = validMoves;
         } 
         return moves;
@@ -186,7 +186,7 @@ public class GameState extends AbstractGame
         {
             for (int j = 0; j < BOARD_DIMENSION; j++)
             {
-                System.out.println("[" + i + "," + j + "]");
+                //System.out.println("[" + i + "," + j + "]");
                 if (gameBoard.board[i][j] != null)
                 {
                     gameBoard.board[i][j].printTile();
@@ -260,7 +260,7 @@ public class GameState extends AbstractGame
             int player = nextMover().ordinal();
             if (moveNumber < 2) 
             {
-                System.out.println(player);
+                //System.out.println(player);
                 playerPositions[player][0] = Integer.parseInt(String.valueOf(move.charAt(0)));
                 playerPositions[player][1] = Integer.parseInt(String.valueOf(move.charAt(1)));
                 playerPositions[player][2] = Integer.parseInt(String.valueOf(move.charAt(2)));
