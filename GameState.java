@@ -123,11 +123,12 @@ public class GameState extends AbstractGame
     public Vector<String> computeMoves()
     {
         Vector<String> moves = null;
-        
+        // if the first or second move of the game
         if (moveNumber == 0 || moveNumber == 1)
         {
             moves = startPositions;
         }
+        // all moves after the first two in the game
         else
         {
             for (String m : moves)
