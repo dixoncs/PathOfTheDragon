@@ -1,4 +1,4 @@
-//import java.util.Stack;
+import java.util.Stack;
 import java.util.Vector;
 
 /**
@@ -22,6 +22,7 @@ public class GameState extends AbstractGame
     public Tile[][] playerHands;
     public Vector<String> startPositions; 
     public Vector<String> validMoves;
+    public static final boolean TEST = true;
 
     //HUMAN ALWAYS GOES FIRST
 
@@ -71,11 +72,20 @@ public class GameState extends AbstractGame
      */
     public static void main(String[] args)
     {
-        GameState game = new GameState();
-        //game.initBoard();
-        game.play(0);
-        game.displayStatus();
-        System.out.println(game.nextMover().ordinal());
+        if (TEST) {
+            GameState game = new GameState();
+            game.initBoard();
+            game.initPlayerHands();
+            game.displayStatus();
+            System.out.println(game.nextMover().ordinal());
+        }    
+        else {
+            GameState game = new GameState();
+            //game.initBoard();
+            game.play(0);
+            game.displayStatus();
+            System.out.println(game.nextMover().ordinal());
+        }
     }
 
     /**
