@@ -343,19 +343,20 @@ public class GameState extends AbstractGame
             //playerPositions[player][2] = playerPosition.charAt(2);
         }
         
-        public String moveBoat(String currentLocation)
-        {
-            String neighborLoc = gameboard.getNeighbor(currentLocation)
-            //Check Tile Paths
-            Tile tile = gameboard.board[Integer.parseInt(String.valueOf(neighborLoc.charAt(0)))][Integer.parseInt(String.valueOf(neighborLoc.charAt(1)))];
-            int currentK = Integer.parseInt(String.valueOf(neighborLoc.charAt(2)));
-            int[] tilePoints = tile.getPoints();
-            int newK = tilePoints[currentK];
-            String newPlayerLocation = "" + neighborLoc.charAt(0) + neighborLoc.charAt(1) + newK;
-            return newPlayerLocation;
-        }
+    }
         
-    }    
+    public String moveBoat(String currentLocation)
+    {
+        String neighborLoc = gameboard.getNeighbor(currentLocation);
+        //Check Tile Paths
+        Tile tile = gameboard.board[Integer.parseInt(String.valueOf(neighborLoc.charAt(0)))][Integer.parseInt(String.valueOf(neighborLoc.charAt(1)))];
+        int currentK = Integer.parseInt(String.valueOf(neighborLoc.charAt(2)));
+        int[] tilePoints = tile.getPoints();
+        int newK = tilePoints[currentK];
+        String newPlayerLocation = "" + neighborLoc.charAt(0) + neighborLoc.charAt(1) + newK;
+        return newPlayerLocation;
+    }
+           
 }
 
 
