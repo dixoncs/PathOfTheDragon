@@ -59,7 +59,25 @@ public class GameStateTest
         }
     }
     
+    /*
+     * Tests the getNeighbor method.
+     */
+    @Test
+    public void testGetNeighbor()
+    {
+        GameBoard gb = new GameBoard();
+        String testNeighbors[] = {"014", "112", "115", "117"};   
+        String correctNeighbors[] = {"111", "127", "210", "102"};
+        for (int i = 0; i < testNeighbors.length; i++)
+        {
+            if (!gb.getNeighbor(testNeighbors[i]).equals(correctNeighbors[i]))
+            {
+                fail("Neighbor is not correct!!\t" + testNeighbors[i]);
+            }
     
+        }
+    }
+
     /**
      * Tests .
      */
