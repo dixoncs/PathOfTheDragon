@@ -284,7 +284,7 @@ public class GameState extends AbstractGame
             playerHands[player][tileIndex] = new Tile();
             int[] newTileLocation = new int[2];
             
-            String tilePlacement = gameboard.getNeighbor("" + playerPositions[player][0] + playerPositions[player][1] + playerPositions[player][2])
+            String tilePlacement = gameboard.getNeighbor("" + playerPositions[player][0] + playerPositions[player][1] + playerPositions[player][2]);
             
             newTileLocation[0] = Integer.parseInt(String.valueOf(tilePlacement.charAt(0)));
             newTileLocation[1] = Integer.parseInt(String.valueOf(tilePlacement.charAt(1)));
@@ -295,9 +295,9 @@ public class GameState extends AbstractGame
             
             String newPlayerPosition = moveBoat(currLocation);
             
-            playerPositions[player][0] = Integer.parseInt(String.valueOf(newPlayerPosition.charAt(0));
-            playerPositions[player][1] = Integer.parseInt(String.valueOf(newPlayerPosition.charAt(1));
-            playerPositions[player][2] = Integer.parseInt(String.valueOf(newPlayerPosition.charAt(2));
+            playerPositions[player][0] = Integer.parseInt(String.valueOf(newPlayerPosition.charAt(0)));
+            playerPositions[player][1] = Integer.parseInt(String.valueOf(newPlayerPosition.charAt(1)));
+            playerPositions[player][2] = Integer.parseInt(String.valueOf(newPlayerPosition.charAt(2)));
             
             //if (playerPositions[player][2] == 0 || playerPositions[player][2] == 1) 
             //{
@@ -347,8 +347,8 @@ public class GameState extends AbstractGame
         {
             String neighborLoc = gameboard.getNeighbor(currentLocation)
             //Check Tile Paths
-            Tile tile = gameboard.board[Integer.parseInt(String.valueOf(neighborLoc.charAt(0))][Integer.parseInt(String.valueOf(neighborLoc.charAt(1))];
-            int currentK = Integer.parseInt(String.valueOf(neighborLoc.charAt(2));
+            Tile tile = gameboard.board[Integer.parseInt(String.valueOf(neighborLoc.charAt(0)))][Integer.parseInt(String.valueOf(neighborLoc.charAt(1)))];
+            int currentK = Integer.parseInt(String.valueOf(neighborLoc.charAt(2)));
             int[] tilePoints = tile.getPoints();
             int newK = tilePoints[currentK];
             String newPlayerLocation = "" + neighborLoc.charAt(0) + neighborLoc.charAt(1) + newK;
