@@ -356,6 +356,69 @@ public class GameState extends AbstractGame
         String newPlayerLocation = "" + neighborLoc.charAt(0) + neighborLoc.charAt(1) + newK;
         return newPlayerLocation;
     }
+    
+    
+    @SuppressWarnings("unchecked")
+    public GameState clone()
+    {
+        GameState gameStateCopy;
+        gameStateCopy = (GameState) super.clone();
+        
+        gameStateCopy.playerHands = deepCopy1(playerHands);
+        gameStateCopy.playerPositions = deepCopy(playerPositions);
+        gameStateCopy.startPositions = (Vector<String>) startPositions.clone();
+        gameStateCopy.validMoves = (Vector<String>) validMoves.clone();
+        gameStateCopy.gameBoard = gameBoard.clone();
+       
+        
+        return gameStateCopy;
+        
+    }
+
+    public static int[][] deepCopy(int[][] playerPositions) {
+        if (playerPositions == null) {
+            return null;
+        }
+
+        int[][] playerPositionsCopy = new int[playerPositions.length][];
+        for (int i = 0; i < playerPositions.length; i++) 
+        {
+           for (int j = 0; j < playerPositions[i].length; j++)
+           {
+               playerPositionsCopy[i][j] = playerPositions[i][j];
+           }
+       }
+        
+        return playerPositionsCopy;
+    }
+
+
+    public static Tile[][] deepCopy1(Tile[][] playerHands) {
+        if (playerHands == null) {
+            return null;
+        }
+
+        Tile[][] playerHandsCopy = new Tile[playerHands.length][];
+        for (int i = 0; i < playerHands.length; i++) 
+        {
+            playerHandsCopy[i] = new Tile[playerHands[i].length];
+            
+            for (int j = 0; j < playerHandsCopy[i].length; j++)
+            {
+                if (playerHands[i][j] == null)
+                {
+                    playerHandsCopy[i][j] = null;
+                }
+                else 
+                {
+                    Tile tile = playerHands[i][j];
+                    playerHandsCopy[i][j] = tile.clone();
+                }
+            }
+        }
+        
+        return playerHandsCopy;
+    }
            
 }
 
