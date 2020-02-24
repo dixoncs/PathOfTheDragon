@@ -1,86 +1,80 @@
+import java.util.LinkedList;
 import java.util.HashMap;
 
 /**
+ * GameBoard class.
+ *
  * @author Courtney Dixon
- * @author Cameron Small
+ * @author Diana Martinez
+ * @version Spring 2020
  */
 
-public class GameBoard {
+public class GameBoard
+{
 
     public Tile[][] board;
     public static HashMap<String, String> tilePaths;
+	public LinkedList[] tilePaths1;
 
-    public GameBoard() {
+	/**
+	 * No argument constructor.
+	 */
+    public GameBoard()
+    {
         board = new Tile[8][8];
         tilePaths = new HashMap<String, String>();
+		tilePaths1 = new LinkedList[48];
     }
 
     /**
-     * The neighboringPoint() method takes in a point (i, j, k) and returns the neighboring point (i, j, k) of the next
-     * tile.
+     * The getNeighbor() method takes in a point (i, j, k)
+     * and returns the neighboring point (i, j, k) of the next tile;
+     * i = row, j = column, k = position on tile.
      *
-     * @param ijk A string containing the i, j, and k values (i/j for tile coordinate, k for which point we're dealing
-     *            with).
-     * @return A new ijk string of the neighboring point.
+     * @param ijk A string containing the i, j, and k values
+     * @return the neighboring point.
      */
-    public static String neighboringPoint(String ijk) {
-        String iSub = ijk.substring(0, 1);
-        int i = Integer.parseInt(iSub);
-
-        String jSub = ijk.substring(1, 2);
-        int j = Integer.parseInt(jSub);
-
-        String kSub = ijk.substring(2);
-        int k = Integer.parseInt(kSub);
-
-        // Based on the provided k, determine new I/J coordinates.
-        int neighborI = i;
-        int neighborJ = j;
-        int neighborK = k;
-
-        // Based on the neighborMap, get corresponding K point.
-        int[] neighborMap = {5, 4, 7, 6, 1, 0, 3, 2};
-
-        switch (k) {
-            case 0:
-            case 1:
-                if (0 < j) {
-                    neighborJ = j;
-                    neighborJ--;
-                    neighborK = neighborMap[k];
-                }
-                break;
-            case 2:
-            case 3:
-                if (8 > i) {
-                    neighborI = i;
-                    neighborI++;
-                    neighborK = neighborMap[k];
-                }
-                break;
-            case 4:
-            case 5:
-                if (8 > j) {
-                    neighborJ = j;
-                    neighborJ++;
-                    neighborK = neighborMap[k];
-                }
-                break;
-            case 6:
-            case 7:
-                if (0 < i) {
-                    neighborI = i;
-                    neighborI--;
-                    neighborK = neighborMap[k];
-                }
-                break;
-            default:
-        }
-
-        // concatenate all parts (i, j, k) into return string.
-        String neighborIJK = Integer.toString(neighborI) + Integer.toString(neighborJ) + Integer.toString(neighborK);
-
-        return neighborIJK;
+    public static String getNeighbor(String ijk)
+    {
+		String neighbor = "";
+        int i = Character.getNumericValue(ijk.charAt(0));
+        int j = Character.getNumericValue(ijk.charAt(1));
+        int k = Character.getNumericValue(ijk.charAt(2));
+        int [] neighborPairs = {5, 4, 7, 6, 1, 0, 3, 2};
+		switch (k)
+        {
+			//upper neighbor
+			case 0:
+			case 1:
+				neighbor += Integer.toString(i-1);
+            	neighbor += Integer.toString(j);
+            	neighbor += Integer.toString(neighborPairs[k]);
+        		break;
+			 //right neighbor
+        	case 2:
+			case 3:
+            	neighbor += Integer.toString(i);
+            	neighbor += Integer.toString(j+1);
+            	neighbor += Integer.toString(neighborPairs[k]);
+            	break;
+		 	//lower neighbor
+        	case 4:
+			case 5:
+            	neighbor += Integer.toString(i+1);
+            	neighbor += Integer.toString(j);
+            	neighbor += Integer.toString(neighborPairs[k]);
+            	break;
+			//left neighbor
+        	case 6:
+			case 7:
+            	neighbor += Integer.toString(i);
+            	neighbor += Integer.toString(j-1);
+            	neighbor += Integer.toString(neighborPairs[k]);
+            	break;
+			default:
+				break;
+		}
+		return neighbor;
     }    
     
     /**
@@ -115,7 +109,7 @@ public class GameBoard {
             String to = "" + i + j + t.getPoints()[index];
             tilePaths.put(from, to);
 
-            String neighbor = neighboringPoint(from);
+            String neighbor = getNeighbor(from);
             if (tilePaths.containsKey(neighbor))
             {
                 tilePaths.put(from, neighbor);
@@ -126,5 +120,12 @@ public class GameBoard {
             }
         }
     }
+
+    /*public void updatePaths(String ijk, Tile t)
+    {
+        int i = Character.getNumericValue(ijk.charAt(0));
+        int j = Character.getNumericValue(ijk.charAt(1));
+        int k = Character.getNumericValue(ijk.charAt(2));
+    }*/
 }
 
