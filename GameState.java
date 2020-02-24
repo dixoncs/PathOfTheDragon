@@ -380,7 +380,7 @@ public class GameState extends AbstractGame implements Cloneable
             return null;
         }
 
-        int[][] playerPositionsCopy = new int[playerPositions.length][];
+        int[][] playerPositionsCopy = new int[playerPositions.length][playerPositions[0].length];
         for (int i = 0; i < playerPositions.length; i++) 
         {
            for (int j = 0; j < playerPositions[i].length; j++)
