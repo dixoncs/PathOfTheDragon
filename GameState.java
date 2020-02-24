@@ -7,7 +7,7 @@ import java.util.Vector;
  * @author Mikayla Sage, Courtney Dixon
  * @version 02.03.20
  */
-public class GameState extends AbstractGame
+public class GameState extends AbstractGame implements Cloneable
 {
     public static final int BOARD_DIMENSION = 6;
     public static final int NUM_PLAYERS = 3;
