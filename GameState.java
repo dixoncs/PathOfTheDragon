@@ -347,7 +347,7 @@ public class GameState extends AbstractGame
         
     public String moveBoat(String currentLocation)
     {
-        String neighborLoc = gameboard.getNeighbor(currentLocation);
+        String neighborLoc = gameBoard.getNeighbor(currentLocation);
         //Check Tile Paths
         Tile tile = gameBoard.board[Integer.parseInt(String.valueOf(neighborLoc.charAt(0)))][Integer.parseInt(String.valueOf(neighborLoc.charAt(1)))];
         int currentK = Integer.parseInt(String.valueOf(neighborLoc.charAt(2)));
