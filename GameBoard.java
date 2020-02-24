@@ -13,7 +13,7 @@ public class GameBoard
 {
 
     public Tile[][] board;
-    public static HashMap<String, String> tilePaths;
+    public HashMap<String, String> tilePaths;
 	public LinkedList[] tilePaths1;
 
 	/**
@@ -101,7 +101,7 @@ public class GameBoard
         return false;
     }
 
-    public static void updatePaths(int i, int j, Tile t)
+    public void updatePaths(int i, int j, Tile t)
     {
         for (int index = 0; index < t.getPoints().length; index++)
         {
@@ -127,5 +127,53 @@ public class GameBoard
         int j = Character.getNumericValue(ijk.charAt(1));
         int k = Character.getNumericValue(ijk.charAt(2));
     }*/
+	
+    public static Tile[][] deepCopy(Tile[][] board) {
+        if (board == null) {
+            return null;
+        }
+
+        Tile[][] boardCopy = new Tile[board.length][];
+        for (int i = 0; i < board.length; i++) 
+        {
+            boardCopy[i] = new Tile[board[i].length];
+       
+            for (int j = 0; j < boardCopy[i].length; j++)
+            {
+                if (board[i][j] == null)
+                {
+                    boardCopy[i][j] = null;
+                }
+                else
+                {
+                    Tile temp = board[i][j];
+                    boardCopy[i][j] = temp.clone();
+                }
+            }
+        }
+        
+        return boardCopy;
+    }
+    
+   
+    public GameBoard clone()
+    {
+        GameBoard gameBoardCopy;
+        
+        try
+        {
+            gameBoardCopy = (GameBoard) super.clone();
+        }
+        catch (CloneNotSupportedException e)
+        {
+            throw new RuntimeException
+            ("Does not implement cloneable.");
+        }
+        
+        gameBoardCopy.board = deepCopy(board);
+        
+        
+        return gameBoardCopy;
+    }
 }
 
