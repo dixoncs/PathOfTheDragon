@@ -115,5 +115,25 @@ public class Tile {
     public int[] getPoints() {
         return points;
     }
+    
+    
+     public Tile clone()
+    {
+        Tile tileCopy;
+        
+        try
+        {
+            tileCopy = (Tile) super.clone();
+        }
+        catch (CloneNotSupportedException e)
+        {
+            throw new RuntimeException
+            ("Does not implement cloneable.");
+        }
+         tileCopy.points = points.clone();
+         
+         return tileCopy;
+        
+    }
 
 }
