@@ -7,7 +7,7 @@ import java.util.Stack;
  * @author Cameron Small
  *
  */
-public class Tile {
+public class Tile implements Cloneable {
 
     // Fields
     /**
