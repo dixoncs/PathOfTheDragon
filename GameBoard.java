@@ -9,7 +9,7 @@ import java.util.HashMap;
  * @version Spring 2020
  */
 
-public class GameBoard
+public class GameBoard implements Cloneable
 {
 
     public Tile[][] board;
