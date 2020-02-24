@@ -4,18 +4,18 @@ CKSTYLE_XML = cs_appstate_checks.xml
 CKSTYLE_COMMAND =  -jar /usr/local/checkstyle-5.5/checkstyle-5.5-all.jar
 PROG_DRIVER = @java GameState
 
-default: 
-	$(PROG_DRIVER)
-
-help:
+default:
 	@echo "5 available targets:" 
-	@echo "____________________ help - shows makefile target choices"
+	@echo "____________________ default - shows makefile target choices"
 	@echo "____________________ clean - removes editor tmpfiles and .class files"
 	@echo "____________________ compile - compiles all necessary java files" 
 	@echo "____________________ test - builds JUnit5 tests"
 	@echo "____________________ check - runs checkstyle"
-	@echo "________make________ default that runs main in GameState class" 
+	@echo "____________________ run - runs main in GameState class" 
 
+run: 
+	$(PROG_DRIVER)
+	
 compile: GameState.java GameStateTest.java $(JUNIT5_JAR)
 	javac AbstractGame.java
 	javac GameBoard.java
