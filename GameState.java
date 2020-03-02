@@ -242,7 +242,7 @@ public class GameState extends AbstractGame implements Cloneable
      */
     public boolean isLegal(String move)
     {
-        System.out.println(move);
+        //System.out.println(move);
         return computeMoves().contains(move);
     }
 
