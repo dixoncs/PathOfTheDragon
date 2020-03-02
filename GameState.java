@@ -73,15 +73,14 @@ public class GameState extends AbstractGame implements Cloneable
     {
         GameState game = new GameState();
         //game.initBoard();
+
         game.play(0);
-        game.displayStatus();
-        System.out.println(game.nextMover().ordinal());
     }
 
     /**
      * Print all tiles for a player's hand.
      */
-    public void printPlayerHand()
+    public void printPlayerHand(int player)
     {
         for (int i = 0; i < NUM_HAND_TILES; i++)
         {
@@ -89,7 +88,7 @@ public class GameState extends AbstractGame implements Cloneable
             {
                 System.out.print("[" + i);
                 System.out.println(j + "]");
-                playerHands[nextMover().ordinal()][i].rotateTile(j).printTile();
+                playerHands[player][i].rotateTile(j).printTile();
             }
         }
     }
@@ -123,10 +122,11 @@ public class GameState extends AbstractGame implements Cloneable
     public Vector<String> computeMoves()
     {
         Vector<String> moves = null;
+        System.out.println("Move number: " + moveNumber);
         // if the first or second move of the game
-        if (moveNumber == 0 || moveNumber == 1)
+        if (moveNumber < 2)
         {
-            moves = startPositions;
+            moves = (Vector<String>)startPositions.clone();
         }
         // all moves after the first two in the game
         else
@@ -135,7 +135,7 @@ public class GameState extends AbstractGame implements Cloneable
             {
                 System.out.println(m);
             }*/
-            moves = validMoves;
+            moves = (Vector<String>)validMoves.clone();
         } 
         return moves;
     }
@@ -182,11 +182,13 @@ public class GameState extends AbstractGame implements Cloneable
      */
     public void displayStatus()
     {
-        for (int i = 0; i < BOARD_DIMENSION; i++)
+        printPlayerHand(0);
+        printPlayerHand(2);
+        for (int i = 1; i < 7; i++)
         {
-            for (int j = 0; j < BOARD_DIMENSION; j++)
+            for (int j = 1; j < 7; j++)
             {
-                //System.out.println("[" + i + "," + j + "]");
+                System.out.println("[" + i + "," + j + "]");
                 if (gameBoard.board[i][j] != null)
                 {
                     gameBoard.board[i][j].printTile();
@@ -255,6 +257,8 @@ public class GameState extends AbstractGame implements Cloneable
      */
     public void makeMove(String move)
     {
+        System.out.println(nextMover().ordinal());
+        System.out.println("move --> " + move);
         if (isLegal(move))
         {
             int player = nextMover().ordinal();
@@ -284,8 +288,13 @@ public class GameState extends AbstractGame implements Cloneable
             playerHands[player][tileIndex] = new Tile();
             int[] newTileLocation = new int[2];
             
-            String tilePlacement = gameBoard.getNeighbor("" + playerPositions[player][0] + playerPositions[player][1] + playerPositions[player][2]);
             
+
+            String tilePlacement = gameBoard.getNeighbor("" + playerPositions[player][0] + playerPositions[player][1] + playerPositions[player][2]);
+            System.out.println("'" + tilePlacement + "'");
+            System.out.println("Here"); 
+            System.out.println(tilePlacement.charAt(0));
+            System.out.println(tilePlacement.charAt(1)); 
             newTileLocation[0] = Integer.parseInt(String.valueOf(tilePlacement.charAt(0)));
             newTileLocation[1] = Integer.parseInt(String.valueOf(tilePlacement.charAt(1)));
             
@@ -343,6 +352,7 @@ public class GameState extends AbstractGame implements Cloneable
             //playerPositions[player][2] = playerPosition.charAt(2);
         }
         
+        System.out.println("Player position " + playerPositions[nextMover().ordinal()][0] + playerPositions[nextMover().ordinal()][1] + playerPositions[nextMover().ordinal()][2]);
     }
         
     public String moveBoat(String currentLocation)

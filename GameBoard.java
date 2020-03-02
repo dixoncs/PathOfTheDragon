@@ -41,7 +41,8 @@ public class GameBoard implements Cloneable
         int j = Character.getNumericValue(ijk.charAt(1));
         int k = Character.getNumericValue(ijk.charAt(2));
         int [] neighborPairs = {5, 4, 7, 6, 1, 0, 3, 2};
-		switch (k)
+		System.out.println(k);
+        switch (k)
         {
 			//upper neighbor
 			case 0:

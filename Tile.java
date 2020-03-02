@@ -8,6 +8,7 @@ import java.util.Stack;
  *
  */
 public class Tile implements Cloneable {
+    public static Random rand = new Random(12);
 
     // Fields
     /**
@@ -47,7 +48,6 @@ public class Tile implements Cloneable {
         }
 
         int[] output = new int[8];                              // create int array for output
-        Random rand = new Random();
 
         for (int i = 0; i < 4; i++) {
             int a = possibleValues.get(rand.nextInt(possibleValues.size()));    // get random element
