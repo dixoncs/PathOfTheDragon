@@ -142,7 +142,20 @@ public class GameStateTest
     @Test
     public void testMoveBoat()
     {
-        
+        GameState gs = new GameState();
+        String currentLocation = "014";
+        String newLocation = gs.moveBoat(currentLocation);
+        //get the tile at 1,1
+        Tile testTile = gs.gameBoard.board[1][1];
+        //get the tile points and get connection to 4
+        int[] testPoints = testTile.getPoints();
+        int testK = testPoints[4];
+        //put together the string stuff
+        String testLocation = "11" + testK;
+        if (!newLocation.equals(testLocation))
+        {
+            fail("New location is incorrect!");
+        }    
     }*/
 
     /*
