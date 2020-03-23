@@ -310,10 +310,10 @@ public class GameState extends AbstractGame implements Cloneable
             
 
             String tilePlacement = gameBoard.getNeighbor("" + playerPositions[player][0] + playerPositions[player][1] + playerPositions[player][2]);
-            System.out.println("'" + tilePlacement + "'");
-            System.out.println("Here"); 
-            System.out.println(tilePlacement.charAt(0));
-            System.out.println(tilePlacement.charAt(1)); 
+            //System.out.println("'" + tilePlacement + "'");
+            //System.out.println("Here"); 
+            //System.out.println(tilePlacement.charAt(0));
+            //System.out.println(tilePlacement.charAt(1)); 
             newTileLocation[0] = Integer.parseInt(String.valueOf(tilePlacement.charAt(0)));
             newTileLocation[1] = Integer.parseInt(String.valueOf(tilePlacement.charAt(1)));
             
