@@ -15,7 +15,8 @@ public class GameState extends AbstractGame implements Cloneable
     //do not change the number of players, there are still two players, you have no friends
     public static final int NUM_HAND_TILES = 3;
     public static final int HUMAN_INDEX = 0;
-    public static final int COMPUTER_INDEX = 1;
+    public static final int COMPUTER_INDEX = 2;
+    public static final int NOONE_INDEX = 1;
 
     public static GameBoard gameBoard;
     public int[][] playerPositions;
@@ -182,7 +183,13 @@ public class GameState extends AbstractGame implements Cloneable
      */
     public void displayStatus()
     {
+        System.out.println("HUMAN:");
+        System.out.println("Current position: [" + playerPositions[HUMAN_INDEX][0] + playerPositions[HUMAN_INDEX][1] 
+            + playerPositions[HUMAN_INDEX][2] + "]");
         printPlayerHand(0);
+        System.out.println("COMPUTER:");
+        System.out.println("Current position: [" + playerPositions[COMPUTER_INDEX][0] + playerPositions[COMPUTER_INDEX][1]
+            + playerPositions[COMPUTER_INDEX][2] + "]");
         printPlayerHand(2);
         for (int i = 1; i < 7; i++)
         {
