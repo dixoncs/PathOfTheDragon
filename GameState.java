@@ -4,7 +4,7 @@ import java.util.Vector;
 /**
  * GameState class.
  *
- * @author Mikayla Sage, Courtney Dixon
+ * @author Mikayla Sage, Courtney Dixon, Diana Martinez, Emma Allen
  * @version 02.03.20
  */
 public class GameState extends AbstractGame implements Cloneable
@@ -82,15 +82,26 @@ public class GameState extends AbstractGame implements Cloneable
      */
     public void printPlayerHand(int player)
     {
-        for (int i = 0; i < NUM_HAND_TILES; i++)
+	if ( player == 0)
+	{
+	    System.out.println("\nHuman Hand");
+	}
+	else if ( player == 2)
+	{
+	    System.out.println("\nComputer Hand");
+        }
+	for (int i = 0; i < NUM_HAND_TILES; i++)
         {
+	    //System.out.println();
             for (int j = 0; j <= 3; j++)
             {
-                System.out.print("[" + i);
-                System.out.println(j + "]");
+                //System.out.print("[" + i);
+                //System.out.println(j + "]");
                 playerHands[player][i].rotateTile(j).printTile();
             }
+	    System.out.println();
         }
+	System.out.println();
     }
 
     /**
@@ -122,7 +133,7 @@ public class GameState extends AbstractGame implements Cloneable
     public Vector<String> computeMoves()
     {
         Vector<String> moves = null;
-        System.out.println("Move number: " + moveNumber);
+        //System.out.println("Move number: " + moveNumber);
         // if the first or second move of the game
         if (moveNumber < 2)
         {
