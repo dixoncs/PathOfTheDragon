@@ -84,12 +84,12 @@ public class GameState extends AbstractGame implements Cloneable
     public void printPlayerHand(int player)
     {
         if ( player == 0)
-	    {
-	        System.out.println("\nHuman Hand");
-	    }
-	    else if ( player == 2)
-	    {
-	        System.out.println("\nComputer Hand");
+	{
+	    System.out.println("\nHuman Hand");
+	}
+	else if ( player == 2)
+	{
+	    System.out.println("\nComputer Hand");
         }
         for (int i = 0; i < NUM_HAND_TILES; i++)
         {
