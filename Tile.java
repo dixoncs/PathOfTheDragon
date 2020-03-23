@@ -64,6 +64,7 @@ public class Tile implements Cloneable {
     /**
      * The printTile() method is a basic way to print out a tile in terms of points.
      */
+<<<<<<< HEAD
     public void printTile() {
         //StringBuilder output = new StringBuilder("[0] [1] [2] [3] [4] [5] [6] [7]\n");
         System.out.print("[ ");
@@ -73,6 +74,19 @@ public class Tile implements Cloneable {
         }
         //System.out.println(output + "\n");
 	System.out.print("]  ");
+=======
+    public void printTile()
+    {
+        //StringBuilder output = new StringBuilder("[0] [1] [2] [3] [4] [5] [6] [7]\n");
+        System.out.print("[ ");
+        for (int location : points)
+        {
+            //output.append(" ").append(location).append("  ");
+            System.out.printf("%d ", location);
+        }
+        //System.out.println(output + "\n");
+        System.out.print("]  ");
+>>>>>>> d235e6b59fc26743678b4ea7bb2f889909d868ef
     }
 
     /**
