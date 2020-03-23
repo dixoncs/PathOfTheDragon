@@ -302,7 +302,7 @@ public class GameState extends AbstractGame implements Cloneable
             Tile tile;
 
             tile = playerHands[player][tileIndex];
-            tile.rotateTile(numRotations);
+            tile = tile.rotateTile(numRotations);
             playerHands[player][tileIndex] = new Tile();
             int[] newTileLocation = new int[2];
             
