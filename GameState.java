@@ -206,11 +206,12 @@ public class GameState extends AbstractGame implements Cloneable
         {
             for (int j = 1; j < 7; j++)
             {
-                System.out.println("[" + i + "," + j + "]");
+                System.out.print("[" + i + "," + j + "]  ");
                 if (gameBoard.board[i][j] != null)
                 {
                     gameBoard.board[i][j].printTile();
                 }
+                System.out.println();
             }
         }
     }
@@ -275,8 +276,8 @@ public class GameState extends AbstractGame implements Cloneable
      */
     public void makeMove(String move)
     {
-        System.out.println(nextMover().ordinal());
-        System.out.println("move --> " + move);
+        //System.out.println(nextMover().ordinal());
+        //System.out.println("move --> " + move);
         if (isLegal(move))
         {
             int player = nextMover().ordinal();
