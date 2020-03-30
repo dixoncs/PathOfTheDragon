@@ -118,7 +118,7 @@ public abstract class AbstractGame implements Cloneable
      *            How far ahead the computer looks to make a move.
      * @return The overall score for the human player in the games.
      */
-    public static final double repeatPlay(String name, int depth)
+    public static final double repeatPlay(String name, int depth) 
     {
         Class<?> myClass;
         Constructor<?> myConstructor;
@@ -144,7 +144,8 @@ public abstract class AbstractGame implements Cloneable
         }
         catch (Exception e)
         {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
+            //System.out.println(e.getMessage());
             throw new IllegalArgumentException("Could not play " + name);
         }
         return humanPoints / gamesPlayed;

@@ -75,7 +75,7 @@ public class GameState extends AbstractGame implements Cloneable
         // GameState game = new GameState();
         // game.initBoard();
         // game.play(0);
-	AbstractGame.repeatPlay("GameState", 0);
+	    AbstractGame.repeatPlay("GameState", 1);
     }
 
     /**
@@ -197,11 +197,11 @@ public class GameState extends AbstractGame implements Cloneable
         System.out.println("HUMAN:");
         System.out.println("Current position: [" + playerPositions[HUMAN_INDEX][0] + playerPositions[HUMAN_INDEX][1] 
             + playerPositions[HUMAN_INDEX][2] + "]");
-        printPlayerHand(0);
+        printPlayerHand(HUMAN_INDEX);
         System.out.println("COMPUTER:");
         System.out.println("Current position: [" + playerPositions[COMPUTER_INDEX][0] + playerPositions[COMPUTER_INDEX][1]
             + playerPositions[COMPUTER_INDEX][2] + "]");
-        printPlayerHand(2);
+        printPlayerHand(COMPUTER_INDEX);
         for (int i = 1; i < 7; i++)
         {
             for (int j = 1; j < 7; j++)
@@ -229,6 +229,22 @@ public class GameState extends AbstractGame implements Cloneable
      */
     public double evaluate()
     {
+        String humanPos = Integer.toString(playerPositions[HUMAN_INDEX][0]);
+        String compPos = Integer.toString(playerPositions[COMPUTER_INDEX][0]);
+        humanPos += Integer.toString(playerPositions[HUMAN_INDEX][1]);
+        humanPos += Integer.toString(playerPositions[HUMAN_INDEX][2]);
+        compPos += Integer.toString(playerPositions[COMPUTER_INDEX][1]);
+        compPos += Integer.toString(playerPositions[COMPUTER_INDEX][2]);
+        if (gameBoard.perimeter(humanPos) && !gameBoard.perimeter(compPos))
+        {
+            //return -1;
+            return 1;
+        }
+        else if (!gameBoard.perimeter(humanPos) && gameBoard.perimeter(compPos))
+        {
+            //return 1;
+            return -1;
+        }
         return 0;
     }
 
@@ -251,6 +267,7 @@ public class GameState extends AbstractGame implements Cloneable
         {
             return true;
         }
+        
         return false;
     }
 
@@ -376,19 +393,22 @@ public class GameState extends AbstractGame implements Cloneable
 
     public void moveBoats()
     {
-	for (int player = 0; player <= 2; player += 2)
-	{
+	    for (int player = 0; player <= 2; player += 2)
+	    {
             String currentLocation = "" + playerPositions[player][0] + playerPositions[player][1] + playerPositions[player][2]; 
             String neighborLoc = gameBoard.getNeighbor(currentLocation);
             Tile tile = gameBoard.board[Integer.parseInt(String.valueOf(neighborLoc.charAt(0)))][Integer.parseInt(String.valueOf(neighborLoc.charAt(1)))];
             int currentK = Integer.parseInt(String.valueOf(neighborLoc.charAt(2)));
-            int[] tilePoints = tile.getPoints();
-            int newK = tilePoints[currentK];
-            String newPlayerPosition = "" + neighborLoc.charAt(0) + neighborLoc.charAt(1) + newK;
-            playerPositions[player][0] = Integer.parseInt(String.valueOf(newPlayerPosition.charAt(0)));
-            playerPositions[player][1] = Integer.parseInt(String.valueOf(newPlayerPosition.charAt(1)));
-            playerPositions[player][2] = Integer.parseInt(String.valueOf(newPlayerPosition.charAt(2)));
-	}
+            if (tile != null)
+            {
+                int[] tilePoints = tile.getPoints();
+                int newK = tilePoints[currentK];
+                String newPlayerPosition = "" + neighborLoc.charAt(0) + neighborLoc.charAt(1) + newK;
+                playerPositions[player][0] = Integer.parseInt(String.valueOf(newPlayerPosition.charAt(0)));
+                playerPositions[player][1] = Integer.parseInt(String.valueOf(newPlayerPosition.charAt(1)));
+                playerPositions[player][2] = Integer.parseInt(String.valueOf(newPlayerPosition.charAt(2)));
+            }
+	    }
     }
         
     /*
@@ -406,7 +426,31 @@ public class GameState extends AbstractGame implements Cloneable
     */
     
     
-    @SuppressWarnings("unchecked")
+    /*@SuppressWarnings("unchecked")
+    public GameState clone()
+    {
+        GameState gameStateCopy;
+        try
+        {
+                gameStateCopy = (GameState) super.clone();
+        }
+        catch (CloneNotSupportedException e)
+        {   
+            e.printStackTrace();
+            throw new RuntimeException("Booooooooo!!!");
+        }
+        gameStateCopy.playerHands = deepCopy1(playerHands);
+        gameStateCopy.playerPositions = deepCopy(playerPositions);
+        gameStateCopy.startPositions = (Vector<String>) startPositions.clone();
+        gameStateCopy.validMoves = (Vector<String>) validMoves.clone();
+        gameStateCopy.gameBoard = gameBoard.clone();
+       
+        
+        return gameStateCopy;
+        
+    }*/
+	
+	@SuppressWarnings("unchecked")
     public GameState clone()
     {
         GameState gameStateCopy;
