@@ -72,10 +72,10 @@ public class GameState extends AbstractGame implements Cloneable
      */
     public static void main(String[] args)
     {
-        GameState game = new GameState();
-        //game.initBoard();
-
-        game.play(0);
+        // GameState game = new GameState();
+        // game.initBoard();
+        // game.play(0);
+	AbstractGame.repeatPlay("GameState", 0);
     }
 
     /**
@@ -239,12 +239,12 @@ public class GameState extends AbstractGame implements Cloneable
      */
     public boolean isGameOver()
     {
-        String humanPos = Integer.toString(playerPositions[0][0]);
-        String compPos = Integer.toString(playerPositions[1][0]);
-        humanPos += Integer.toString(playerPositions[0][1]);
-        humanPos += Integer.toString(playerPositions[0][2]);
-        compPos += Integer.toString(playerPositions[1][1]);
-        compPos += Integer.toString(playerPositions[1][2]);
+        String humanPos = Integer.toString(playerPositions[HUMAN_INDEX][0]);
+        String compPos = Integer.toString(playerPositions[COMPUTER_INDEX][0]);
+        humanPos += Integer.toString(playerPositions[HUMAN_INDEX][1]);
+        humanPos += Integer.toString(playerPositions[HUMAN_INDEX][2]);
+        compPos += Integer.toString(playerPositions[COMPUTER_INDEX][1]);
+        compPos += Integer.toString(playerPositions[COMPUTER_INDEX][2]);
         
         if (gameBoard.perimeter(humanPos) || gameBoard.perimeter(compPos)
             && (moveNumber != 0 || moveNumber != 1))
@@ -319,13 +319,13 @@ public class GameState extends AbstractGame implements Cloneable
             
             gameBoard.board[newTileLocation[0]][newTileLocation[1]] = tile;
             
-            String currLocation = "" + playerPositions[player][0] + playerPositions[player][1] + playerPositions[player][2];
+            // String currLocation = "" + playerPositions[player][0] + playerPositions[player][1] + playerPositions[player][2];
             
-            String newPlayerPosition = moveBoat(currLocation);
+            moveBoats();
             
-            playerPositions[player][0] = Integer.parseInt(String.valueOf(newPlayerPosition.charAt(0)));
-            playerPositions[player][1] = Integer.parseInt(String.valueOf(newPlayerPosition.charAt(1)));
-            playerPositions[player][2] = Integer.parseInt(String.valueOf(newPlayerPosition.charAt(2)));
+            //playerPositions[player][0] = Integer.parseInt(String.valueOf(newPlayerPosition.charAt(0)));
+            //playerPositions[player][1] = Integer.parseInt(String.valueOf(newPlayerPosition.charAt(1)));
+            //playerPositions[player][2] = Integer.parseInt(String.valueOf(newPlayerPosition.charAt(2)));
             
             //if (playerPositions[player][2] == 0 || playerPositions[player][2] == 1) 
             //{
@@ -373,7 +373,25 @@ public class GameState extends AbstractGame implements Cloneable
         
         System.out.println("Player position " + playerPositions[nextMover().ordinal()][0] + playerPositions[nextMover().ordinal()][1] + playerPositions[nextMover().ordinal()][2]);
     }
+
+    public void moveBoats()
+    {
+	for (int player = 0; player <= 2; player += 2)
+	{
+            String currentLocation = "" + playerPositions[player][0] + playerPositions[player][1] + playerPositions[player][2]; 
+            String neighborLoc = gameBoard.getNeighbor(currentLocation);
+            Tile tile = gameBoard.board[Integer.parseInt(String.valueOf(neighborLoc.charAt(0)))][Integer.parseInt(String.valueOf(neighborLoc.charAt(1)))];
+            int currentK = Integer.parseInt(String.valueOf(neighborLoc.charAt(2)));
+            int[] tilePoints = tile.getPoints();
+            int newK = tilePoints[currentK];
+            String newPlayerPosition = "" + neighborLoc.charAt(0) + neighborLoc.charAt(1) + newK;
+            playerPositions[player][0] = Integer.parseInt(String.valueOf(newPlayerPosition.charAt(0)));
+            playerPositions[player][1] = Integer.parseInt(String.valueOf(newPlayerPosition.charAt(1)));
+            playerPositions[player][2] = Integer.parseInt(String.valueOf(newPlayerPosition.charAt(2)));
+	}
+    }
         
+    /*
     public String moveBoat(String currentLocation)
     {
         String neighborLoc = gameBoard.getNeighbor(currentLocation);
@@ -385,6 +403,7 @@ public class GameState extends AbstractGame implements Cloneable
         String newPlayerLocation = "" + neighborLoc.charAt(0) + neighborLoc.charAt(1) + newK;
         return newPlayerLocation;
     }
+    */
     
     
     @SuppressWarnings("unchecked")
