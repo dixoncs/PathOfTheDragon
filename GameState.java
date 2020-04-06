@@ -18,7 +18,7 @@ public class GameState extends AbstractGame implements Cloneable
     public static final int COMPUTER_INDEX = 2;
     public static final int NOONE_INDEX = 1;
 
-    public static GameBoard gameBoard;
+    public GameBoard gameBoard;
     public int[][] playerPositions;
     public Tile[][] playerHands;
     public Vector<String> startPositions; 
