@@ -434,6 +434,8 @@ public abstract class AbstractGame implements Cloneable
 
         // Make the best move.
         makeMove(bestMove);
+        System.out.println("\nComputer Move:  " + bestMove);
+        System.out.println();
     }
 
     /**
