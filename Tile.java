@@ -162,5 +162,6 @@ public class Tile implements Cloneable {
         characters[],characters[] = possibilities.charAt(); 
         0 1 2 3 4 5 6 7
         5 7 3 2 6 0 4 1 */
+    }
 
 }
