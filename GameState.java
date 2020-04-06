@@ -181,6 +181,7 @@ public class GameState extends AbstractGame implements Cloneable
         {
             System.out.println(m);
         }*/ 
+        Collections.reverse(sMoves);       
         return sMoves;
     }
 
