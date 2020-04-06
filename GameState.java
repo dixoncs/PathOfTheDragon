@@ -94,7 +94,17 @@ public class GameState extends AbstractGame implements Cloneable
         }
 	    for (int i = 0; i < NUM_HAND_TILES; i++)
         {
-	        //System.out.println();
+	        for (int y = 0; y <= 3; y++)
+            {
+                System.out.print("  [  " + i);
+                System.out.print(y + "  ]  ");
+            }
+            System.out.println();
+            for (int x = 0; x < 40; x++)
+            {
+                System.out.print("-");
+            }
+            System.out.println();
             for (int j = 0; j <= 3; j++)
             {
                 //System.out.print("[" + i);
@@ -102,6 +112,11 @@ public class GameState extends AbstractGame implements Cloneable
                 playerHands[player][i].rotateTile(j).printTile();
             }
 	        System.out.println();
+            for (int x = 0; x < 40; x++)
+            {
+                System.out.print("-");
+            }
+            System.out.println();                                               
         }
 	    System.out.println();
     }
@@ -390,7 +405,7 @@ public class GameState extends AbstractGame implements Cloneable
             //playerPositions[player][2] = playerPosition.charAt(2);
         }
         
-        System.out.println("Player position " + playerPositions[nextMover().ordinal()][0] + playerPositions[nextMover().ordinal()][1] + playerPositions[nextMover().ordinal()][2]);
+        //System.out.println("Player position " + playerPositions[nextMover().ordinal()][0] + playerPositions[nextMover().ordinal()][1] + playerPositions[nextMover().ordinal()][2]);
     }
 
     public void moveBoats()

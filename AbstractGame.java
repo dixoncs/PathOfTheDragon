@@ -14,8 +14,9 @@ public abstract class AbstractGame implements Cloneable
     /**
      * THREE PRIVATE VARIABLES and THREE PRIVATE METHODS.
      */
-    private static Scanner stdin = new Scanner(System.in);
+    //private static Scanner stdin = new Scanner(System.in);
     public int moveNumber = 0;
+    private static Scanner stdin;
 
     /**
      * THREE CONSTANTS (for a possible game outcome).
@@ -434,6 +435,8 @@ public abstract class AbstractGame implements Cloneable
 
         // Make the best move.
         makeMove(bestMove);
+        System.out.println("\nComputer Move:  " + bestMove);
+        System.out.println();
     }
 
     /**
