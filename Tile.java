@@ -15,6 +15,7 @@ public class Tile implements Cloneable {
     * Array of integers that express the points/paths for each tile.
     */
     private int[] points;
+    private char[] characters;
 
 
     /**
@@ -140,5 +141,26 @@ public class Tile implements Cloneable {
          return tileCopy;
         
     }
+    
+    public tileToChars()
+    {
+        String possibilities = "abcd";
+        int ptr = 0;
+        characters = new chars[points.length];
+        //characters = {'&','&','&','&','&','&','&','&'};
+        for (int i = 0; i < points.length; i++)
+        {
+            if characters[i] == 0)
+            {
+                characters[i] = characters[points[i]] = possibilities.charAt(ptr);
+                ptr++;
+            }
+        }
+         
+        /*characters[],characters[] = possibilities.charAt(); 
+        characters[],characters[] = possibilities.charAt(); 
+        characters[],characters[] = possibilities.charAt(); 
+        0 1 2 3 4 5 6 7
+        5 7 3 2 6 0 4 1 */
 
 }
