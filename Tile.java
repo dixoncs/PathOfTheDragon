@@ -142,15 +142,15 @@ public class Tile implements Cloneable {
         
     }
     
-    public tileToChars()
+    public void tileToChars()
     {
         String possibilities = "abcd";
         int ptr = 0;
-        characters = new chars[points.length];
+        characters = new char[points.length];
         //characters = {'&','&','&','&','&','&','&','&'};
         for (int i = 0; i < points.length; i++)
         {
-            if characters[i] == 0)
+            if (characters[i] == 0)
             {
                 characters[i] = characters[points[i]] = possibilities.charAt(ptr);
                 ptr++;
