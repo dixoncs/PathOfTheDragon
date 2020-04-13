@@ -1,8 +1,8 @@
 # PathOfTheDragon
-### By: Courtney Dixon, Diana Martinez, Cameron Small, and Mikayla Sage
+### By: Courtney Dixon, Diana Martinez, Cameron Small, Mikayla Sage, and Emma Allen
 ### Advising Courtesy of Dr. Mitch Parry
 
-Appalachian State University Department of Computer Science S-STEM project Fall 2019
+Appalachian State University Department of Computer Science S-STEM project Fall 2019 and Spring 2020 
 
 
 ## Project Overview
