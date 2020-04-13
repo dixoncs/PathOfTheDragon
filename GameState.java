@@ -312,6 +312,7 @@ public class GameState extends AbstractGame implements Cloneable
     {
         //System.out.println(nextMover().ordinal());
         //System.out.println("move --> " + move);
+        //move = forceMoves();
         if (isLegal(move))
         {
             int player = nextMover().ordinal();
@@ -339,9 +340,7 @@ public class GameState extends AbstractGame implements Cloneable
             tile = playerHands[player][tileIndex];
             tile = tile.rotateTile(numRotations);
             playerHands[player][tileIndex] = new Tile();
-            int[] newTileLocation = new int[2];
-            
-            
+            int[] newTileLocation = new int[2];          
 
             String tilePlacement = gameBoard.getNeighbor("" + playerPositions[player][0] + playerPositions[player][1] + playerPositions[player][2]);
             //System.out.println("'" + tilePlacement + "'");
@@ -355,7 +354,8 @@ public class GameState extends AbstractGame implements Cloneable
             
             // String currLocation = "" + playerPositions[player][0] + playerPositions[player][1] + playerPositions[player][2];
             
-            moveBoats();
+            moveBoat(HUMAN_INDEX);
+            moveBoat(COMPUTER_INDEX);
             
             //playerPositions[player][0] = Integer.parseInt(String.valueOf(newPlayerPosition.charAt(0)));
             //playerPositions[player][1] = Integer.parseInt(String.valueOf(newPlayerPosition.charAt(1)));
@@ -408,24 +408,40 @@ public class GameState extends AbstractGame implements Cloneable
         //System.out.println("Player position " + playerPositions[nextMover().ordinal()][0] + playerPositions[nextMover().ordinal()][1] + playerPositions[nextMover().ordinal()][2]);
     }
 
-    public void moveBoats()
+    public void moveBoat(int player)
     {
-	    for (int player = 0; player <= 2; player += 2)
-	    {
+        //for (int player = 0; player <= 2; player += 2)
+	    //{
+            // Gets the current location of the player as a string
             String currentLocation = "" + playerPositions[player][0] + playerPositions[player][1] + playerPositions[player][2]; 
+            // Gets the neighboring point of the player's current location as a string
             String neighborLoc = gameBoard.getNeighbor(currentLocation);
+            int row = Integer.parseInt(String.valueOf(neighborLoc.charAt(0)));
+            int column = Integer.parseInt(String.valueOf(neighborLoc.charAt(1)));
+            // Uses the row and column from the neighbor location to index into the 2-D array, gameBoard.board, of type Tile to get the adjacent Tile 
             Tile tile = gameBoard.board[Integer.parseInt(String.valueOf(neighborLoc.charAt(0)))][Integer.parseInt(String.valueOf(neighborLoc.charAt(1)))];
+            //Tile tile = gameBoard.board[row][column];
+            // Gets the point on the adjavcent Tile that our boat would move to
             int currentK = Integer.parseInt(String.valueOf(neighborLoc.charAt(2)));
+            // if there is no Tile there, then we cannot move across it, so if there is a Tile there
             if (tile != null)
             {
+                // Get the points of the Tile to determine paths across a singular Tile 
                 int[] tilePoints = tile.getPoints();
+                // Determine what new k on the Tile we must move our boat
                 int newK = tilePoints[currentK];
+                // make new player location string
                 String newPlayerPosition = "" + neighborLoc.charAt(0) + neighborLoc.charAt(1) + newK;
+                // Set the players new position
                 playerPositions[player][0] = Integer.parseInt(String.valueOf(newPlayerPosition.charAt(0)));
                 playerPositions[player][1] = Integer.parseInt(String.valueOf(newPlayerPosition.charAt(1)));
                 playerPositions[player][2] = Integer.parseInt(String.valueOf(newPlayerPosition.charAt(2)));
+                System.out.println("The new location of " + player + " is  " + newPlayerPosition);
+                moveBoat(player);
             }
-	    }
+            String currentLocationEnd = "" + playerPositions[player][0] + playerPositions[player][1] + playerPositions[player][2];
+            System.out.println("The final location of " + player + " is  " + currentLocationEnd);
+        //}
     }
         
     /*
@@ -502,8 +518,10 @@ public class GameState extends AbstractGame implements Cloneable
     }
 
 
-    public static Tile[][] deepCopy1(Tile[][] playerHands) {
-        if (playerHands == null) {
+    public static Tile[][] deepCopy1(Tile[][] playerHands)
+    {
+        if (playerHands == null)
+        {
             return null;
         }
 
@@ -528,7 +546,31 @@ public class GameState extends AbstractGame implements Cloneable
         
         return playerHandsCopy;
     }
-           
+    
+    /**
+     * This method was for testing purposes for the case when boats must cross multiple tiles in one turn
+     * 13.4.2020
+     */    
+    public String forceMoves()
+    {
+        if (moveNumber == 0)
+        {
+            return "202";
+        }
+        else if (moveNumber == 1)
+        {
+            return "015";
+        }
+        else if (moveNumber == 2)
+        {
+            return "00";
+        }
+        else if (moveNumber == 3)
+        {
+            return "00";
+        }
+        return "";
+    }
 }
 
 
