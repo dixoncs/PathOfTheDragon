@@ -352,7 +352,11 @@ public class GameState extends AbstractGame implements Cloneable
             
             moveBoat(HUMAN_INDEX);
             moveBoat(COMPUTER_INDEX);
-            
+           
+            // MUST RESET THE TILE BEFORE THE MOVE WITH tileToChars() SO THAT THE TILE THE PLAYER WAS ON HAS 
+            // THE CORRECT CHARACTERS AGAIN. WE CAN ALTER THE characters array AT k WITH 
+            // ANOTHER METHOD setBoatLocation(intk, char c) 
+
             //playerPositions[player][0] = Integer.parseInt(String.valueOf(newPlayerPosition.charAt(0)));
             //playerPositions[player][1] = Integer.parseInt(String.valueOf(newPlayerPosition.charAt(1)));
             //playerPositions[player][2] = Integer.parseInt(String.valueOf(newPlayerPosition.charAt(2)));
