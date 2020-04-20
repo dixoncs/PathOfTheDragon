@@ -102,7 +102,7 @@ public class GameBoard implements Cloneable
         return false;
     }
 
-    public void updatePaths(int i, int j, Tile t)
+    /*public void updatePaths(int i, int j, Tile t)
     {
         for (int index = 0; index < t.getPoints().length; index++)
         {
@@ -120,7 +120,7 @@ public class GameBoard implements Cloneable
                 tilePaths.put(neighbor, from);
             }
         }
-    }
+    }*/
 
     /*public void updatePaths(String ijk, Tile t)
     {
@@ -175,6 +175,34 @@ public class GameBoard implements Cloneable
         
         
         return gameBoardCopy;
+    }
+
+    public String toString()
+    {
+        String s = "";
+        
+        for (int i = 0; i < 8; i++)
+        {
+            String[] row = {"    ", "    ", "    ", "    "};
+            if (board[i][0] != null)
+            {
+                row = board[i][0].getRows();
+            }
+            for (int j = 1; j < 8; j++)
+            {
+                String[] t = {"    ", "    ", "    ", "    "};
+                if (board[i][j] != null)
+                {
+                    t = board[i][j].getRows();    
+                }
+                for (int k = 0; k < row.length; k++)
+                {
+                    row[k] += " " + t[k];
+                }
+            }
+            System.out.println(String.join("\n", row));
+        }
+        return s;
     }
 }
 

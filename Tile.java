@@ -25,6 +25,7 @@ public class Tile implements Cloneable {
      */
     public Tile() {
         points = shuffleValues();
+        tileToChars();
     }
 
     /**
@@ -35,6 +36,7 @@ public class Tile implements Cloneable {
      */
     public Tile(int[] values) {
         points = values;
+        tileToChars();
     }
 
     /**
@@ -147,7 +149,6 @@ public class Tile implements Cloneable {
         String possibilities = "abcd";
         int ptr = 0;
         characters = new char[points.length];
-        //characters = {'&','&','&','&','&','&','&','&'};
         for (int i = 0; i < points.length; i++)
         {
             if (characters[i] == 0)
@@ -156,12 +157,53 @@ public class Tile implements Cloneable {
                 ptr++;
             }
         }
-         
-        /*characters[],characters[] = possibilities.charAt(); 
-        characters[],characters[] = possibilities.charAt(); 
-        characters[],characters[] = possibilities.charAt(); 
-        0 1 2 3 4 5 6 7
-        5 7 3 2 6 0 4 1 */
     }
 
+    /**
+     * 20.4.2020
+     */
+    public String[] getRows()
+    {
+        String[] rows = new String[4];
+        rows[0] = " " + characters[0] + characters[1] + " ";
+        rows[1] = characters[7] + " " + " " + characters[2];
+        rows[2] = characters[6] + " " + " " + characters[3];
+        rows[3] = " " + characters[5] + characters[4] + " ";
+        //System.out.println(rows[0]);
+        //System.out.println(rows[1]);
+        //System.out.println(rows[2]);
+        //System.out.println(rows[3]);
+        return rows;
+    }
+
+    /**
+     * 20.4.2020
+     */
+    public String toString()
+    {
+        return String.join("\n", this.getRows());
+    }
+
+    /**
+     *
+     *
+    public String getRow(int r)
+    {
+        switch (r)
+        {
+            case 0:
+                return " " + characters[0] + characters[1] + " ";
+            case 1:
+                return characters[7] + " " + " " + characters[2];
+            case 2:
+                return characters[6] + " " + " " + characters[3];
+            case 3:
+                return " " + characters[5] + characters[4] + " ";
+            default:
+                break;
+        }
+    }*/
+
 }
+
+

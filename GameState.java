@@ -92,31 +92,26 @@ public class GameState extends AbstractGame implements Cloneable
 	    {
 	        System.out.println("\nComputer Hand");
         }
-	    for (int i = 0; i < NUM_HAND_TILES; i++)
+        for (int i = 0; i < NUM_HAND_TILES; i++)
         {
-	        for (int y = 0; y <= 3; y++)
+            for (int y = 0; y <= 3; y++)
             {
-                System.out.print("  [  " + i);
-                System.out.print(y + "  ]  ");
+                 System.out.print("[" + i);
+                 System.out.print(y + "] ");
             }
             System.out.println();
-            for (int x = 0; x < 40; x++)
+            String[] result = playerHands[player][i].getRows();
+            for (int j = 1; j < 4; j++)
             {
-                System.out.print("-");
+                String[] nextResult = playerHands[player][i].rotateTile(j).getRows();
+                for (int k = 0; k < result.length; k++)
+                {
+                    result[k] += " " + nextResult[k];
+                }
+                //String[] empty = {"", "", "", ""};
+                //playerHands[player][i].rotateTile(j).printTile();
             }
-            System.out.println();
-            for (int j = 0; j <= 3; j++)
-            {
-                //System.out.print("[" + i);
-                //System.out.println(j + "]");
-                playerHands[player][i].rotateTile(j).printTile();
-            }
-	        System.out.println();
-            for (int x = 0; x < 40; x++)
-            {
-                System.out.print("-");
-            }
-            System.out.println();                                               
+	        System.out.println(String.join("\n", result));
         }
 	    System.out.println();
     }
@@ -219,7 +214,7 @@ public class GameState extends AbstractGame implements Cloneable
         System.out.println("Current position: [" + playerPositions[COMPUTER_INDEX][0] + playerPositions[COMPUTER_INDEX][1]
             + playerPositions[COMPUTER_INDEX][2] + "]");
         printPlayerHand(COMPUTER_INDEX);
-        for (int i = 1; i < 7; i++)
+        /*for (int i = 1; i < 7; i++)
         {
             for (int j = 1; j < 7; j++)
             {
@@ -230,7 +225,8 @@ public class GameState extends AbstractGame implements Cloneable
                 }
                 System.out.println();
             }
-        }
+        }*/
+        System.out.println(gameBoard);
     }
 
     /**
