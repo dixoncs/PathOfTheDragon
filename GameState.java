@@ -10,6 +10,8 @@ import java.util.Collections;
  */
 public class GameState extends AbstractGame implements Cloneable
 {
+    public static final char HUMAN_CHAR = '\u262A';
+    public static final char COMPUTER_CHAR = '\u2639';
     public static final int BOARD_DIMENSION = 6;
     public static final int NUM_PLAYERS = 3;
     //there is no third player, it is place holder for nobody from the player enum type abstract class
@@ -215,13 +217,13 @@ public class GameState extends AbstractGame implements Cloneable
         {
             for (int b = 0; b < 4; b++)
             {
-                System.out.print("_");
+                System.out.print("-");
             }
             System.out.print(" ");
         }
         System.out.println();
         System.out.println(gameBoard);
-        for (int a = 0; a < 8; a++)
+        /*for (int a = 0; a < 8; a++)
         {
             for (int b = 0; b < 4; b++)
             {
@@ -229,7 +231,7 @@ public class GameState extends AbstractGame implements Cloneable
             }
             System.out.print(" ");
        }                                                                                                 
-        System.out.println();
+        System.out.println();*/
 	
 	System.out.println("HUMAN:");
         System.out.println("Current position: [" + playerPositions[HUMAN_INDEX][0] + playerPositions[HUMAN_INDEX][1] 
@@ -363,54 +365,15 @@ public class GameState extends AbstractGame implements Cloneable
            
             // MUST RESET THE TILE BEFORE THE MOVE WITH tileToChars() SO THAT THE TILE THE PLAYER WAS ON HAS 
             // THE CORRECT CHARACTERS AGAIN. WE CAN ALTER THE characters array AT k WITH 
-            // ANOTHER METHOD setBoatLocation(intk, char c) 
-
-            //playerPositions[player][0] = Integer.parseInt(String.valueOf(newPlayerPosition.charAt(0)));
-            //playerPositions[player][1] = Integer.parseInt(String.valueOf(newPlayerPosition.charAt(1)));
-            //playerPositions[player][2] = Integer.parseInt(String.valueOf(newPlayerPosition.charAt(2)));
-            
-            //if (playerPositions[player][2] == 0 || playerPositions[player][2] == 1) 
-            //{
-            //    newTileLocation[0] = playerPositions[player][0] - 1;
-            //    newTileLocation[1] = playerPositions[player][1];
-            //}
-            //else if (playerPositions[player][2] == 2 || playerPositions[player][2] == 3) 
-            //{
-            //    newTileLocation[0] = playerPositions[player][0];
-            //    newTileLocation[1] = playerPositions[player][1] + 1;
-            //}
-            //else if (playerPositions[player][2] == 4 || playerPositions[player][2] == 5) 
-            //{
-            //    newTileLocation[0] = playerPositions[player][0] + 1;
-            //    newTileLocation[1] = playerPositions[player][1];
-            //}
-            //else 
-            //{
-            //    newTileLocation[0] = playerPositions[player][0];
-            //    newTileLocation[1] = playerPositions[player][1] - 1;
-            //}
-          
-            //GameBoard.updatePaths(newTileLocation[0], newTileLocation[1], tile);
-
-            //updatePlayerPositions();
-
-            // get current ijk of player. Check if it's a key in the hashtable
-            //String playerPosition = "";
-            //playerPosition += playerPositions[player][0]; 
-            //playerPosition += playerPositions[player][1];
-            //playerPosition += playerPositions[player][2];
-
-            // while the current player position has a value,
-            // it's mapped to get that value and keep looking.
-            //while (GameBoard.tilePaths.containsKey(playerPosition))
-            //{
-            //    playerPosition = GameBoard.tilePaths.get(playerPosition);
-            //}
-
-            // update playerPositions array with point gotten from hashtable
-            //playerPositions[player][0] = playerPosition.charAt(0);
-            //playerPositions[player][1] = playerPosition.charAt(1);
-            //playerPositions[player][2] = playerPosition.charAt(2);
+            // ANOTHER METHOD setBoatLocation(int k, char c) 
+            if ( player == HUMAN_INDEX)
+            {
+                gameBoard.board[playerPositions[player][0]][playerPositions[player][1]].setBoatLocation(playerPositions[player][2], HUMAN_CHAR);
+            }
+            else
+            {
+                gameBoard.board[playerPositions[player][0]][playerPositions[player][1]].setBoatLocation(playerPositions[player][2], COMPUTER_CHAR);
+            }
         }
         
         //System.out.println("Player position " + playerPositions[nextMover().ordinal()][0] + playerPositions[nextMover().ordinal()][1] + playerPositions[nextMover().ordinal()][2]);

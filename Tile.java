@@ -185,6 +185,16 @@ public class Tile implements Cloneable {
     }
 
     /**
+     * Sets the current location of a boat to the proper character.
+     * @param k point on tile that needs boat character
+     * @param c character representing human or computer boat
+     */
+    public void setBoatLocation(int k, char c)
+    {
+        characters[k] = c;
+    }
+
+    /**
      *
      *
     public String getRow(int r)
