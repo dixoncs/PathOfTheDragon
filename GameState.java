@@ -214,19 +214,25 @@ public class GameState extends AbstractGame implements Cloneable
         System.out.println("Current position: [" + playerPositions[COMPUTER_INDEX][0] + playerPositions[COMPUTER_INDEX][1]
             + playerPositions[COMPUTER_INDEX][2] + "]");
         printPlayerHand(COMPUTER_INDEX);
-        /*for (int i = 1; i < 7; i++)
+        for (int a = 0; a < 8; a++)
         {
-            for (int j = 1; j < 7; j++)
+            for (int b = 0; b < 4; b++)
             {
-                System.out.print("[" + i + "," + j + "]  ");
-                if (gameBoard.board[i][j] != null)
-                {
-                    gameBoard.board[i][j].printTile();
-                }
-                System.out.println();
+                System.out.print("_");
             }
-        }*/
+            System.out.print(" ");
+        }
+        System.out.println();
         System.out.println(gameBoard);
+        for (int a = 0; a < 8; a++)
+        {
+            for (int b = 0; b < 4; b++)
+            {
+                System.out.print("_");
+            }
+            System.out.print(" ");
+       }                                                                                                 
+        System.out.println();
     }
 
     /**

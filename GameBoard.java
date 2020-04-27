@@ -180,7 +180,6 @@ public class GameBoard implements Cloneable
     public String toString()
     {
         String s = "";
-        
         for (int i = 0; i < 8; i++)
         {
             String[] row = {"    ", "    ", "    ", "    "};
