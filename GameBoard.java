@@ -196,7 +196,7 @@ public class GameBoard implements Cloneable
                 }
                 for (int k = 0; k < row.length; k++)
                 {
-                    row[k] += " " + t[k];
+                    row[k] += "|" + t[k];
                 }
             }
             System.out.println(String.join("\n", row));
