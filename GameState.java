@@ -228,7 +228,7 @@ public class GameState extends AbstractGame implements Cloneable
         {
             for (int b = 0; b < 4; b++)
             {
-                System.out.print("_");
+                System.out.print(" " + "\u035E");
             }
             System.out.print(" ");
        }                                                                                                 
