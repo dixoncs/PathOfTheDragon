@@ -139,7 +139,7 @@ public class Tile implements Cloneable {
             ("Does not implement cloneable.");
         }
          tileCopy.points = points.clone();
-
+         tileCopy.characters = characters.clone();
          return tileCopy;
         
     }

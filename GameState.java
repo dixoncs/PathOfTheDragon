@@ -10,8 +10,8 @@ import java.util.Collections;
  */
 public class GameState extends AbstractGame implements Cloneable
 {
-    public static final char HUMAN_CHAR = '\u262A';
-    public static final char COMPUTER_CHAR = '\u2639';
+    public static final char HUMAN_CHAR = '@';   //'\u263A';
+    public static final char COMPUTER_CHAR = '#';   //'\u2639';
     public static final int BOARD_DIMENSION = 6;
     public static final int NUM_PLAYERS = 3;
     //there is no third player, it is place holder for nobody from the player enum type abstract class
@@ -360,19 +360,24 @@ public class GameState extends AbstractGame implements Cloneable
             
             // String currLocation = "" + playerPositions[player][0] + playerPositions[player][1] + playerPositions[player][2];
             
-            moveBoat(HUMAN_INDEX);
-            moveBoat(COMPUTER_INDEX);
-           
-            // MUST RESET THE TILE BEFORE THE MOVE WITH tileToChars() SO THAT THE TILE THE PLAYER WAS ON HAS 
-            // THE CORRECT CHARACTERS AGAIN. WE CAN ALTER THE characters array AT k WITH 
-            // ANOTHER METHOD setBoatLocation(int k, char c) 
-            if ( player == HUMAN_INDEX)
+            if (gameBoard.board[playerPositions[HUMAN_INDEX][0]][playerPositions[HUMAN_INDEX][1]] != null)
             {
-                gameBoard.board[playerPositions[player][0]][playerPositions[player][1]].setBoatLocation(playerPositions[player][2], HUMAN_CHAR);
+                gameBoard.board[playerPositions[HUMAN_INDEX][0]][playerPositions[HUMAN_INDEX][1]].tileToChars();
             }
-            else
+            moveBoat(HUMAN_INDEX);
+            if (gameBoard.board[playerPositions[COMPUTER_INDEX][0]][playerPositions[COMPUTER_INDEX][1]] != null)
             {
-                gameBoard.board[playerPositions[player][0]][playerPositions[player][1]].setBoatLocation(playerPositions[player][2], COMPUTER_CHAR);
+                gameBoard.board[playerPositions[COMPUTER_INDEX][0]][playerPositions[COMPUTER_INDEX][1]].tileToChars();
+            }
+	        moveBoat(COMPUTER_INDEX);
+           
+            if (gameBoard.board[playerPositions[HUMAN_INDEX][0]][playerPositions[HUMAN_INDEX][1]] != null)
+            {
+                gameBoard.board[playerPositions[HUMAN_INDEX][0]][playerPositions[HUMAN_INDEX][1]].setBoatLocation(playerPositions[HUMAN_INDEX][2], HUMAN_CHAR);
+            }
+            if (gameBoard.board[playerPositions[COMPUTER_INDEX][0]][playerPositions[COMPUTER_INDEX][1]] != null)
+            {
+                gameBoard.board[playerPositions[COMPUTER_INDEX][0]][playerPositions[COMPUTER_INDEX][1]].setBoatLocation(playerPositions[COMPUTER_INDEX][2], COMPUTER_CHAR);
             }
         }
         
@@ -407,11 +412,11 @@ public class GameState extends AbstractGame implements Cloneable
                 playerPositions[player][0] = Integer.parseInt(String.valueOf(newPlayerPosition.charAt(0)));
                 playerPositions[player][1] = Integer.parseInt(String.valueOf(newPlayerPosition.charAt(1)));
                 playerPositions[player][2] = Integer.parseInt(String.valueOf(newPlayerPosition.charAt(2)));
-                System.out.println("The new location of " + player + " is  " + newPlayerPosition);
+                //System.out.println("The new location of " + player + " is  " + newPlayerPosition);
                 moveBoat(player);
             }
             String currentLocationEnd = "" + playerPositions[player][0] + playerPositions[player][1] + playerPositions[player][2];
-            System.out.println("The final location of " + player + " is  " + currentLocationEnd);
+            //System.out.println("The final location of " + player + " is  " + currentLocationEnd);
         //}
     }
         
