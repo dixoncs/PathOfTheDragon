@@ -206,10 +206,7 @@ public class GameState extends AbstractGame implements Cloneable
      */
     public void displayStatus()
     {
-        System.out.println("HUMAN:");
-        System.out.println("Current position: [" + playerPositions[HUMAN_INDEX][0] + playerPositions[HUMAN_INDEX][1] 
-            + playerPositions[HUMAN_INDEX][2] + "]");
-        printPlayerHand(HUMAN_INDEX);
+        
         System.out.println("COMPUTER:");
         System.out.println("Current position: [" + playerPositions[COMPUTER_INDEX][0] + playerPositions[COMPUTER_INDEX][1]
             + playerPositions[COMPUTER_INDEX][2] + "]");
@@ -233,6 +230,11 @@ public class GameState extends AbstractGame implements Cloneable
             System.out.print(" ");
        }                                                                                                 
         System.out.println();
+	
+	System.out.println("HUMAN:");
+        System.out.println("Current position: [" + playerPositions[HUMAN_INDEX][0] + playerPositions[HUMAN_INDEX][1] 
+            + playerPositions[HUMAN_INDEX][2] + "]");
+        printPlayerHand(HUMAN_INDEX);
     }
 
     /**
