@@ -4,7 +4,7 @@ import java.util.Stack;
 
 /**
  *
- * @author Cameron Small
+ * @author Mikayla Sage, Diana Martinez, Emma Allen, Courtney Dixon
  *
  */
 public class Tile implements Cloneable {
